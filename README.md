@@ -5,3 +5,6 @@ Track Your Routine is a Flutter application that allows users to input and track
 
 ### Current Status:
 Under Development 🛠️
+
+## License:
+[MIT License](LICENSE)

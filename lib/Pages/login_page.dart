@@ -1,8 +1,5 @@
-// ignore_for_file: unused_import
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:tyr/color.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -15,17 +12,21 @@ class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: primarycolor,
-      appBar: AppBar(
-        title: const Text("Falculator"),
-        backgroundColor: primarycolor,
-        foregroundColor: Colors.black,
-        centerTitle: true,
-        automaticallyImplyLeading: false,
-        titleTextStyle: TextStyle(
-            fontSize: 24,
-            fontFamily: GoogleFonts.lato().fontFamily,
-            fontWeight: FontWeight.bold),
+      backgroundColor: Colors.grey[300],
+      body: Center(
+        child: Column(
+          children: [
+            const SizedBox(height: 150),
+            Text(
+              'Welcome to TYR',
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 28,
+                fontFamily: GoogleFonts.lato().fontFamily,
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

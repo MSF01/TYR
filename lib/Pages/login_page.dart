@@ -93,10 +93,25 @@ class _LoginState extends State<Login> {
                       fontFamily: GoogleFonts.lato().fontFamily,
                       fontSize: 18,
                       color: Colors.grey[700],
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
                   Expanded(
                     child: Divider(thickness: 0.5, color: Colors.grey[500]),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 30),
+              Row(
+                children: [
+                  Expanded(
+                    child: InkWell(
+                      onTap: () {},
+                      child: Image.asset(
+                        'lib/images/google.png',
+                        height: 42,
+                      ),
+                    ),
                   ),
                 ],
               )

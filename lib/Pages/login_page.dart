@@ -10,6 +10,8 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  void signIn() {}
+
   final user = TextEditingController();
   final pwd = TextEditingController();
   @override
@@ -20,13 +22,13 @@ class _LoginState extends State<Login> {
         child: Center(
           child: Column(
             children: [
-              const SizedBox(height: 150),
+              const SizedBox(height: 70),
               Icon(
-                Icons.verified_user_rounded,
+                Icons.app_registration_outlined,
                 size: 100,
                 color: Colors.grey.shade900,
               ),
-              const SizedBox(height: 50),
+              const SizedBox(height: 30),
               Text(
                 'Welcome to TYR',
                 style: TextStyle(
@@ -53,9 +55,21 @@ class _LoginState extends State<Login> {
                   obsecure: true,
                 ),
               ),
-              const SizedBox(height: 50),
+              const SizedBox(height: 20),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(180, 0, 0, 0),
+                child: Text(
+                  'Forgot Password',
+                  style: TextStyle(
+                      fontSize: 18,
+                      fontFamily: GoogleFonts.lato().fontFamily,
+                      color: Colors.grey.shade700,
+                      fontWeight: FontWeight.bold),
+                ),
+              ),
+              const SizedBox(height: 30),
               ElevatedButton(
-                onPressed: () {},
+                onPressed: signIn,
                 style: ElevatedButton.styleFrom(
                   textStyle: const TextStyle(
                     fontSize: 20,
@@ -66,6 +80,25 @@ class _LoginState extends State<Login> {
                   padding: const EdgeInsets.fromLTRB(35, 16, 35, 16),
                 ),
                 child: const Text('Login'),
+              ),
+              const SizedBox(height: 30),
+              Row(
+                children: [
+                  Expanded(
+                    child: Divider(thickness: 0.5, color: Colors.grey[500]),
+                  ),
+                  Text(
+                    'Or continue with',
+                    style: TextStyle(
+                      fontFamily: GoogleFonts.lato().fontFamily,
+                      fontSize: 18,
+                      color: Colors.grey[700],
+                    ),
+                  ),
+                  Expanded(
+                    child: Divider(thickness: 0.5, color: Colors.grey[500]),
+                  ),
+                ],
               )
             ],
           ),

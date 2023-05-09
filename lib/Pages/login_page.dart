@@ -103,13 +103,18 @@ class _LoginState extends State<Login> {
               ),
               const SizedBox(height: 30),
               Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Expanded(
-                    child: InkWell(
-                      onTap: () {},
+                  InkWell(
+                    child: Container(
+                      padding: EdgeInsets.all(20),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(16),
+                        color: Colors.black,
+                      ),
                       child: Image.asset(
                         'lib/images/google.png',
-                        height: 42,
+                        height: 20,
                       ),
                     ),
                   ),

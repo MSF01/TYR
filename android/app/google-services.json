@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "280656726585",
+    "project_id": "tyr-login",
+    "storage_bucket": "tyr-login.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:280656726585:android:97415d4658c79a860adbe8",
+        "android_client_info": {
+          "package_name": "com.example.tyr"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "280656726585-fb3hmr3vptjermbqp1an08j56g82hujk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBJRzswnWO1HIf8nuCEUdHUsv8BJGjBMsg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "280656726585-fb3hmr3vptjermbqp1an08j56g82hujk.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "280656726585-j7vbltpciek0oucsuvsfdsug4505eiao.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.tyr"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

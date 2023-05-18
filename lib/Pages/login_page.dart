@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:tyr/components/textfield.dart';
@@ -10,7 +11,9 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
-  void signIn() {}
+  void signIn() async{
+    await Firebase
+  }
 
   final user = TextEditingController();
   final pwd = TextEditingController();
@@ -22,7 +25,7 @@ class _LoginState extends State<Login> {
         child: Center(
           child: Column(
             children: [
-              const SizedBox(height: 70),
+              const SizedBox(height: 120),
               Icon(
                 Icons.app_registration_outlined,
                 size: 100,
@@ -87,39 +90,32 @@ class _LoginState extends State<Login> {
                   Expanded(
                     child: Divider(thickness: 0.5, color: Colors.grey[500]),
                   ),
-                  Text(
-                    'Or continue with',
-                    style: TextStyle(
-                      fontFamily: GoogleFonts.lato().fontFamily,
-                      fontSize: 18,
-                      color: Colors.grey[700],
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  Expanded(
-                    child: Divider(thickness: 0.5, color: Colors.grey[500]),
-                  ),
                 ],
               ),
               const SizedBox(height: 30),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  InkWell(
-                    child: Container(
-                      padding: EdgeInsets.all(20),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(16),
-                        color: Colors.black,
-                      ),
-                      child: Image.asset(
-                        'lib/images/google.png',
-                        height: 20,
-                      ),
+                  Text(
+                    'Not a Member?',
+                    style: TextStyle(
+                      fontFamily: GoogleFonts.lato().fontFamily,
+                      fontSize: 20,
+                      color: Colors.grey.shade600,
+                      fontWeight: FontWeight.w600,
                     ),
                   ),
+                  Text(
+                    ' Register Now',
+                    style: TextStyle(
+                      fontFamily: GoogleFonts.lato().fontFamily,
+                      fontSize: 20,
+                      color: Colors.blue.shade600,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  )
                 ],
-              )
+              ),
             ],
           ),
         ),

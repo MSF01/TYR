@@ -14,10 +14,12 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   void signIn() async {
-    _auth.signInWithEmailAndPassword(
+    await _auth.signInWithEmailAndPassword(
       email: email.text,
       password: password.text,
     );
+    // Just added to check if logged in or not
+    print("User has logged in success");
   }
 
   final email = TextEditingController();

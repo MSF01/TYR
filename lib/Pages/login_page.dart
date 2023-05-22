@@ -12,12 +12,16 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  final FirebaseAuth _auth = FirebaseAuth.instance;
   void signIn() async {
-    // await FirebaseAuth _firebase = FirebaseAuth.instance;
+    _auth.signInWithEmailAndPassword(
+      email: email.text,
+      password: password.text,
+    );
   }
 
-  final user = TextEditingController();
-  final pwd = TextEditingController();
+  final email = TextEditingController();
+  final password = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,7 +49,7 @@ class _LoginState extends State<Login> {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 5.0),
                 child: TheTextField(
-                  controller: user,
+                  controller: email,
                   hint: 'Username',
                   obsecure: false,
                 ),
@@ -54,7 +58,7 @@ class _LoginState extends State<Login> {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 5.0),
                 child: TheTextField(
-                  controller: pwd,
+                  controller: password,
                   hint: 'Password',
                   obsecure: true,
                 ),

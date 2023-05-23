@@ -14,16 +14,35 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   void signIn() async {
-    await _auth.signInWithEmailAndPassword(
-      email: email.text,
-      password: password.text,
-    );
-    // Just added to check if logged in or not
-    print("User has logged in success");
+    try {
+      await _auth.signInWithEmailAndPassword(
+        email: email.text,
+        password: password.text,
+      );
+      print('User logged in success with!');
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'user-not-found') {
+        setState(
+          () {
+            warning = 'User is not founded';
+          },
+        );
+      } else if (e.code == 'wrong-password') {
+        setState(
+          () {
+            warning = 'Password you used is wrong!';
+          },
+        );
+      }
+    } catch (e) {
+      print(e);
+    }
   }
 
   final email = TextEditingController();
   final password = TextEditingController();
+
+  String warning = '';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -77,7 +96,17 @@ class _LoginState extends State<Login> {
                       fontWeight: FontWeight.bold),
                 ),
               ),
-              const SizedBox(height: 30),
+              const SizedBox(height: 15),
+              Text(
+                warning,
+                style: TextStyle(
+                  fontFamily: GoogleFonts.lato().fontFamily,
+                  fontSize: 20,
+                  color: Colors.red.shade600,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              const SizedBox(height: 12),
               ElevatedButton(
                 onPressed: signIn,
                 style: ElevatedButton.styleFrom(

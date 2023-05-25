@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:tyr/Pages/register_page.dart';
 import 'package:tyr/components/textfield.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -46,14 +47,14 @@ class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[300],
+      backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Center(
           child: Column(
             children: [
               const SizedBox(height: 120),
               Icon(
-                Icons.app_registration_outlined,
+                Icons.person,
                 size: 100,
                 color: Colors.grey.shade900,
               ),
@@ -90,10 +91,11 @@ class _LoginState extends State<Login> {
                 child: Text(
                   'Forgot Password',
                   style: TextStyle(
-                      fontSize: 18,
-                      fontFamily: GoogleFonts.lato().fontFamily,
-                      color: Colors.grey.shade700,
-                      fontWeight: FontWeight.bold),
+                    fontSize: 18,
+                    fontFamily: GoogleFonts.lato().fontFamily,
+                    color: Colors.grey.shade700,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
               const SizedBox(height: 15),
@@ -141,13 +143,23 @@ class _LoginState extends State<Login> {
                       fontWeight: FontWeight.w600,
                     ),
                   ),
-                  Text(
-                    ' Register Now',
-                    style: TextStyle(
-                      fontFamily: GoogleFonts.lato().fontFamily,
-                      fontSize: 20,
-                      color: Colors.blue.shade600,
-                      fontWeight: FontWeight.w600,
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => RegisterPage(),
+                        ),
+                      );
+                    },
+                    child: Text(
+                      ' Register Now',
+                      style: TextStyle(
+                        fontFamily: GoogleFonts.lato().fontFamily,
+                        fontSize: 20,
+                        color: Colors.blue.shade600,
+                        fontWeight: FontWeight.w600,
+                      ),
                     ),
                   )
                 ],

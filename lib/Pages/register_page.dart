@@ -1,14 +1,44 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:tyr/Pages/login_page.dart';
 import 'package:tyr/components/textfield.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
-class RegisterPage extends StatelessWidget {
-  RegisterPage({super.key});
+class RegisterPage extends StatefulWidget {
+  const RegisterPage({super.key});
+
+  @override
+  State<RegisterPage> createState() => _RegisterPageState();
+}
+
+class _RegisterPageState extends State<RegisterPage> {
+  void signUp() async {
+    final FirebaseAuth auth = FirebaseAuth.instance;
+    try {
+      await auth.createUserWithEmailAndPassword(
+        email: email.text,
+        password: password.text,
+      );
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => const Login(),
+        ),
+      );
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'weak-password') {}
+    }
+  }
 
   final username = TextEditingController();
-  final Email = TextEditingController();
-  final Password = TextEditingController();
-  final ConfirmPwd = TextEditingController();
+
+  final email = TextEditingController();
+
+  final password = TextEditingController();
+
+  final confirmPwd = TextEditingController();
+
+  String warning = '';
 
   @override
   Widget build(BuildContext context) {
@@ -31,24 +61,54 @@ class RegisterPage extends StatelessWidget {
                 controller: username,
                 hint: 'Username',
                 obsecure: false,
+                fillColor: const Color(0xFFFFFFFF),
               ),
               const SizedBox(height: 20),
               TheTextField(
-                controller: Email,
+                controller: email,
                 hint: 'Email',
                 obsecure: false,
+                fillColor: const Color(0xFFFFFFFF),
               ),
               const SizedBox(height: 20),
               TheTextField(
-                controller: Password,
+                controller: password,
                 hint: 'Password',
                 obsecure: true,
+                fillColor: const Color(0xFFFFFFFF),
               ),
               const SizedBox(height: 20),
               TheTextField(
-                controller: ConfirmPwd,
+                controller: confirmPwd,
                 hint: 'Confirm Password',
                 obsecure: true,
+                fillColor: const Color(0xFFFFFFFF),
+              ),
+              const SizedBox(height: 25),
+              Text(
+                warning,
+                style: TextStyle(
+                  fontSize: 22,
+                  fontFamily: GoogleFonts.lato().fontFamily,
+                ),
+              ),
+              const SizedBox(height: 25),
+              TextButton(
+                onPressed: () {
+                  signUp();
+                },
+                style: const ButtonStyle(
+                  backgroundColor: MaterialStatePropertyAll(Colors.black),
+                ),
+                child: Text(
+                  'Register!',
+                  style: TextStyle(
+                    fontSize: 22,
+                    fontFamily: GoogleFonts.lato().fontFamily,
+                    fontWeight: FontWeight.w500,
+                    color: Colors.white,
+                  ),
+                ),
               ),
             ],
           ),

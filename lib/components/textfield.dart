@@ -4,12 +4,14 @@ class TheTextField extends StatelessWidget {
   final controller;
   final String hint;
   final bool obsecure;
+  final fillColor;
 
   const TheTextField(
       {super.key,
       required this.controller,
       required this.hint,
-      required this.obsecure});
+      required this.obsecure,
+      required this.fillColor,});
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +28,7 @@ class TheTextField extends StatelessWidget {
           ),
           hintText: hint,
           hintStyle: const TextStyle(fontSize: 18),
-          fillColor: Colors.grey.shade200,
+          fillColor: fillColor,
           filled: true,
         ),
         obscureText: obsecure,

@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:tyr/Pages/home.dart';
 import 'package:tyr/Pages/register_page.dart';
 import 'package:tyr/components/textfield.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -21,6 +22,12 @@ class _LoginState extends State<Login> {
         password: password.text,
       );
       print('User logged in success with!');
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => const Home(),
+        ),
+      );
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
         setState(
@@ -74,6 +81,7 @@ class _LoginState extends State<Login> {
                   controller: email,
                   hint: 'Username',
                   obsecure: false,
+                  fillColor: Colors.grey.shade200,
                 ),
               ),
               const SizedBox(height: 30),
@@ -83,6 +91,7 @@ class _LoginState extends State<Login> {
                   controller: password,
                   hint: 'Password',
                   obsecure: true,
+                  fillColor: Colors.grey.shade200,
                 ),
               ),
               const SizedBox(height: 20),

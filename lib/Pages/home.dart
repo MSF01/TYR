@@ -11,6 +11,14 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      body: Center(
+        child: Column(
+          children: [
+            Text('This is a home page!'),
+          ],
+        ),
+      ),
+    );
   }
 }

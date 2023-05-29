@@ -50,6 +50,8 @@ class _LoginState extends State<Login> {
   final email = TextEditingController();
   final password = TextEditingController();
 
+  bool isChecked = false;
+
   String warning = '';
   @override
   Widget build(BuildContext context) {
@@ -95,17 +97,39 @@ class _LoginState extends State<Login> {
                 ),
               ),
               const SizedBox(height: 20),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(180, 0, 0, 0),
-                child: Text(
-                  'Forgot Password',
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontFamily: GoogleFonts.lato().fontFamily,
-                    color: Colors.grey.shade700,
-                    fontWeight: FontWeight.bold,
+              Row(
+                children: [
+                  const SizedBox(width: 17),
+                  Checkbox(
+                    materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                    value: isChecked,
+                    visualDensity: VisualDensity.compact,
+                    onChanged: (bool? value) {
+                      setState(() {
+                        isChecked = value!;
+                      });
+                    },
                   ),
-                ),
+                  Text(
+                    'Remember Me',
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontFamily: GoogleFonts.lato().fontFamily,
+                      color: Colors.grey.shade700,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  const SizedBox(width: 65),
+                  Text(
+                    'Forgot Password',
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontFamily: GoogleFonts.lato().fontFamily,
+                      color: Colors.grey.shade700,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ],
               ),
               const SizedBox(height: 15),
               Text(

@@ -13,20 +13,32 @@ class RegisterPage extends StatefulWidget {
 
 class _RegisterPageState extends State<RegisterPage> {
   void signUp() async {
-    final FirebaseAuth auth = FirebaseAuth.instance;
-    try {
-      await auth.createUserWithEmailAndPassword(
-        email: email.text,
-        password: password.text,
-      );
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => const Login(),
-        ),
-      );
-    } on FirebaseAuthException catch (e) {
-      if (e.code == 'weak-password') {}
+    if (password.text != confirmPwd.text) {
+      setState(() {
+        warning = 'Re-check your password';
+      });
+    } else {
+      final FirebaseAuth auth = FirebaseAuth.instance;
+      try {
+        await auth.createUserWithEmailAndPassword(
+          email: email.text,
+          password: password.text,
+        );
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const Login(),
+          ),
+        );
+      } on FirebaseAuthException catch (e) {
+        if (e.code == 'weak-password') {
+          setState(
+            () {
+              warning = 'Weak Password';
+            },
+          );
+        }
+      }
     }
   }
 
@@ -92,21 +104,24 @@ class _RegisterPageState extends State<RegisterPage> {
                   fontFamily: GoogleFonts.lato().fontFamily,
                 ),
               ),
-              const SizedBox(height: 25),
-              TextButton(
-                onPressed: () {
-                  signUp();
-                },
-                style: const ButtonStyle(
-                  backgroundColor: MaterialStatePropertyAll(Colors.black),
-                ),
-                child: Text(
-                  'Register!',
-                  style: TextStyle(
-                    fontSize: 22,
-                    fontFamily: GoogleFonts.lato().fontFamily,
-                    fontWeight: FontWeight.w500,
-                    color: Colors.white,
+              const SizedBox(height: 15),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(35, 16, 35, 16),
+                child: TextButton(
+                  onPressed: () {
+                    signUp();
+                  },
+                  style: const ButtonStyle(
+                    backgroundColor: MaterialStatePropertyAll(Colors.black),
+                  ),
+                  child: Text(
+                    'Register!',
+                    style: TextStyle(
+                      fontSize: 22,
+                      fontFamily: GoogleFonts.lato().fontFamily,
+                      fontWeight: FontWeight.w500,
+                      color: Colors.white,
+                    ),
                   ),
                 ),
               ),

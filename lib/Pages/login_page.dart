@@ -1,4 +1,4 @@
-import 'package:firebase_core/firebase_core.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:tyr/Pages/home.dart';
@@ -15,13 +15,20 @@ class Login extends StatefulWidget {
 
 class _LoginState extends State<Login> {
   final FirebaseAuth _auth = FirebaseAuth.instance;
+
+  Future<void> saveData() async {
+    // SharedPreferences.setMockInitialValues({});
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    await pref.setString('emai', email.text);
+    await pref.setString('password', password.text);
+  }
+
   void signIn() async {
     try {
       await _auth.signInWithEmailAndPassword(
         email: email.text,
         password: password.text,
       );
-      print('User logged in success with!');
       Navigator.push(
         context,
         MaterialPageRoute(
@@ -50,7 +57,7 @@ class _LoginState extends State<Login> {
   final email = TextEditingController();
   final password = TextEditingController();
 
-  bool isChecked = false;
+  bool rememberMe = false;
 
   String warning = '';
   @override
@@ -102,11 +109,11 @@ class _LoginState extends State<Login> {
                   const SizedBox(width: 17),
                   Checkbox(
                     materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                    value: isChecked,
+                    value: rememberMe,
                     visualDensity: VisualDensity.compact,
-                    onChanged: (bool? value) {
+                    onChanged: (value) {
                       setState(() {
-                        isChecked = value!;
+                        rememberMe = value!;
                       });
                     },
                   ),
@@ -143,7 +150,12 @@ class _LoginState extends State<Login> {
               ),
               const SizedBox(height: 12),
               ElevatedButton(
-                onPressed: signIn,
+                onPressed: () async {
+                  if (rememberMe == true) {
+                    await saveData();
+                  }
+                  signIn();
+                },
                 style: ElevatedButton.styleFrom(
                   textStyle: const TextStyle(
                     fontSize: 20,

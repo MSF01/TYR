@@ -15,6 +15,7 @@ Future<void> main() async {
   var password = pref.getString('password');
   runApp(MaterialApp(
     home: email == null && password == null ? const Login() : const TYR(),
+    debugShowCheckedModeBanner: false,
   ));
 }
 

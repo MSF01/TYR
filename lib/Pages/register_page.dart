@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:tyr/Pages/login_page.dart';
 import 'package:tyr/components/textfield.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
@@ -12,18 +13,33 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
+  final FirebaseAuth auth = FirebaseAuth.instance;
+  Future<void> userSetup(String displayName) async {
+   //firebase auth instance to get uuid of user
+
+   //now below I am getting an instance of firebaseiestore then getting the user collection
+   //now I am creating the document if not already exist and setting the data.
+   FirebaseFirestore.instance.collection('Users').document(auth.uid).setData(
+   {
+    'displayName': displayName, 'uid': uid
+   })
+
+   return;
+}
+
   void signUp() async {
     if (password.text != confirmPwd.text) {
       setState(() {
         warning = 'Re-check your password';
       });
     } else {
-      final FirebaseAuth auth = FirebaseAuth.instance;
+      
       try {
-        await auth.createUserWithEmailAndPassword(
+          AuthResult result = await auth.createUserWithEmailAndPassword(
           email: email.text,
           password: password.text,
         );
+        await saveUser(auth.user.id, username)
         Navigator.push(
           context,
           MaterialPageRoute(

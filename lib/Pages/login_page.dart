@@ -19,7 +19,7 @@ class _LoginState extends State<Login> {
   Future<void> saveData() async {
     // SharedPreferences.setMockInitialValues({});
     SharedPreferences pref = await SharedPreferences.getInstance();
-    await pref.setString('emai', email.text);
+    await pref.setString('email', email.text);
     await pref.setString('password', password.text);
   }
 

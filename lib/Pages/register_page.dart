@@ -14,18 +14,6 @@ class RegisterPage extends StatefulWidget {
 
 class _RegisterPageState extends State<RegisterPage> {
   final FirebaseAuth auth = FirebaseAuth.instance;
-  Future<void> userSetup(String displayName) async {
-   //firebase auth instance to get uuid of user
-
-   //now below I am getting an instance of firebaseiestore then getting the user collection
-   //now I am creating the document if not already exist and setting the data.
-   FirebaseFirestore.instance.collection('Users').document(auth.uid).setData(
-   {
-    'displayName': displayName, 'uid': uid
-   })
-
-   return;
-}
 
   void signUp() async {
     if (password.text != confirmPwd.text) {
@@ -33,13 +21,11 @@ class _RegisterPageState extends State<RegisterPage> {
         warning = 'Re-check your password';
       });
     } else {
-      
       try {
-          AuthResult result = await auth.createUserWithEmailAndPassword(
+        await auth.createUserWithEmailAndPassword(
           email: email.text,
           password: password.text,
         );
-        await saveUser(auth.user.id, username)
         Navigator.push(
           context,
           MaterialPageRoute(

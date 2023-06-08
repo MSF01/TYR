@@ -1,4 +1,3 @@
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:tyr/Pages/home.dart';
@@ -6,23 +5,25 @@ import 'package:tyr/Pages/register_page.dart';
 import 'package:tyr/components/textfield.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
+final FirebaseAuth _auth = FirebaseAuth.instance;
+
 class Login extends StatefulWidget {
   const Login({super.key});
 
   @override
   State<Login> createState() => _LoginState();
+
+  Future<bool> checkUser() async {
+    User? user = _auth.currentUser;
+
+    if (user != null) {
+      return true;
+    }
+    return false;
+  }
 }
 
 class _LoginState extends State<Login> {
-  final FirebaseAuth _auth = FirebaseAuth.instance;
-
-  Future<void> saveData() async {
-    // SharedPreferences.setMockInitialValues({});
-    SharedPreferences pref = await SharedPreferences.getInstance();
-    await pref.setString('email', email.text);
-    await pref.setString('password', password.text);
-  }
-
   void signIn() async {
     try {
       await _auth.signInWithEmailAndPassword(
@@ -152,7 +153,7 @@ class _LoginState extends State<Login> {
               ElevatedButton(
                 onPressed: () async {
                   if (rememberMe == true) {
-                    await saveData();
+                    // await saveData();
                   }
                   signIn();
                 },

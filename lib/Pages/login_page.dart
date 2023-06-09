@@ -6,6 +6,7 @@ import 'package:tyr/components/textfield.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
+bool rememberMe = false;
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -16,8 +17,10 @@ class Login extends StatefulWidget {
   Future<bool> checkUser() async {
     User? user = _auth.currentUser;
 
-    if (user != null) {
-      return true;
+    if (rememberMe == true) {
+      if (user != null) {
+        return true;
+      }
     }
     return false;
   }
@@ -57,8 +60,6 @@ class _LoginState extends State<Login> {
 
   final email = TextEditingController();
   final password = TextEditingController();
-
-  bool rememberMe = false;
 
   String warning = '';
   @override
@@ -116,6 +117,9 @@ class _LoginState extends State<Login> {
                       setState(() {
                         rememberMe = value!;
                       });
+                      if (rememberMe == true) {
+                        Login().checkUser();
+                      }
                     },
                   ),
                   Text(
@@ -152,9 +156,7 @@ class _LoginState extends State<Login> {
               const SizedBox(height: 12),
               ElevatedButton(
                 onPressed: () async {
-                  if (rememberMe == true) {
-                    // await saveData();
-                  }
+                  // remember
                   signIn();
                 },
                 style: ElevatedButton.styleFrom(

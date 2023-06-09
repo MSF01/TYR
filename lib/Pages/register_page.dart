@@ -26,6 +26,7 @@ class _RegisterPageState extends State<RegisterPage> {
           email: email.text,
           password: password.text,
         );
+        // ignore: use_build_context_synchronously
         Navigator.push(
           context,
           MaterialPageRoute(

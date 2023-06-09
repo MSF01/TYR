@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tyr/Pages/home.dart';
 import 'package:tyr/Pages/login_page.dart';
 import 'package:tyr/splash.dart';
 import 'color.dart';
@@ -16,8 +17,10 @@ Future<void> main() async {
 class TYR extends StatelessWidget {
   const TYR({super.key});
 
+  static String homeRoute = "/home";
   static String loginRoute = "/login";
   static String onBoard = "/splash";
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -28,7 +31,7 @@ class TYR extends StatelessWidget {
       initialRoute: onBoard,
       routes: {
         "/": (context) => const Login(),
-        // "/home": (context) => const Home(),
+        homeRoute: (context) => const Home(),
         loginRoute: (context) => const Login(),
         onBoard: (context) => const Splash()
       },

@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:tyr/Pages/home.dart';
 import 'package:tyr/Pages/login_page.dart';
@@ -13,9 +12,8 @@ class Splash extends StatefulWidget {
 class _SplashState extends State<Splash> {
   @override
   void initState() {
-    FirebaseAuth.instance.signOut();
     super.initState();
-    Login().checkUser().then(
+    const Login().checkUser().then(
       (available) {
         if (available) {
           navigateToScreen(const Home());

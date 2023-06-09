@@ -6,12 +6,13 @@ class TheTextField extends StatelessWidget {
   final bool obsecure;
   final fillColor;
 
-  const TheTextField(
-      {super.key,
-      required this.controller,
-      required this.hint,
-      required this.obsecure,
-      required this.fillColor,});
+  const TheTextField({
+    super.key,
+    required this.controller,
+    required this.hint,
+    required this.obsecure,
+    required this.fillColor,
+  });
 
   @override
   Widget build(BuildContext context) {

@@ -90,7 +90,7 @@ class _LoginState extends State<Login> {
                 padding: const EdgeInsets.symmetric(horizontal: 5.0),
                 child: TheTextField(
                   controller: email,
-                  hint: 'Username',
+                  hint: 'Email',
                   obsecure: false,
                   fillColor: Colors.grey.shade200,
                 ),
@@ -118,7 +118,7 @@ class _LoginState extends State<Login> {
                         rememberMe = value!;
                       });
                       if (rememberMe == true) {
-                        Login().checkUser();
+                        const Login().checkUser();
                       }
                     },
                   ),

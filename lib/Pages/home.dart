@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tyr/Pages/login_page.dart';
 
 class Home extends StatefulWidget {
@@ -11,6 +12,20 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  void signOut() async {
+    final pref = await SharedPreferences.getInstance();
+    pref.remove('email');
+    pref.remove('rememberMe');
+
+    FirebaseAuth.instance.signOut();
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const Login(),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,13 +39,7 @@ class _HomeState extends State<Home> {
             ),
             ElevatedButton(
               onPressed: () async {
-                FirebaseAuth.instance.signOut();
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const Login(),
-                  ),
-                );
+                signOut();
               },
               style: ElevatedButton.styleFrom(
                 textStyle: const TextStyle(

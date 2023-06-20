@@ -4,6 +4,7 @@ import 'package:tyr/Pages/home.dart';
 import 'package:tyr/Pages/register_page.dart';
 import 'package:tyr/components/textfield.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
 bool rememberMe = false;
@@ -27,6 +28,41 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  @override
+  void initState() {
+    super.initState();
+    loadUser();
+  }
+
+  void loadUser() async {
+    final pref = await SharedPreferences.getInstance();
+    String? usser = pref.getString('email');
+    bool remember = pref.getBool('rememberMe') ?? false;
+
+    if (usser!.isNotEmpty && remember) {
+      Navigator.pushReplacement(
+          context, MaterialPageRoute(builder: ((context) => Home())));
+    } else {
+      setState(() {
+        email.text = usser;
+        rememberMe = remember;
+      });
+    }
+  }
+
+  void saveUser(bool value) async {
+    final pref = await SharedPreferences.getInstance();
+    pref.setBool('rememberMe', value);
+    if (value) {
+      pref.setString('email', email.text);
+    } else {
+      pref.remove('email');
+    }
+    setState(() {
+      rememberMe = value;
+    });
+  }
+
   void signIn() async {
     try {
       await _auth.signInWithEmailAndPassword(
@@ -114,12 +150,7 @@ class _LoginState extends State<Login> {
                     value: rememberMe,
                     visualDensity: VisualDensity.compact,
                     onChanged: (value) {
-                      setState(() {
-                        rememberMe = value!;
-                      });
-                      if (rememberMe == true) {
-                        const Login().checkUser();
-                      }
+                      saveUser(value!);
                     },
                   ),
                   Text(

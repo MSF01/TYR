@@ -12,6 +12,21 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  String username = '';
+
+  @override
+  void initState() {
+    super.initState();
+    getUsername();
+  }
+
+  Future<void> getUsername() async {
+    final prefs = await SharedPreferences.getInstance();
+    setState(() {
+      username = prefs.getString('username') ?? '';
+    });
+  }
+
   void signOut() async {
     final pref = await SharedPreferences.getInstance();
     pref.remove('email');
@@ -33,7 +48,7 @@ class _HomeState extends State<Home> {
         child: Column(
           children: [
             const SizedBox(height: 225),
-            Text('Welcome Back '),
+            Text('Welcome Back ' + username),
             const SizedBox(
               height: 15,
             ),

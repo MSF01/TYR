@@ -39,13 +39,13 @@ class _LoginState extends State<Login> {
     var usser = pref.getString('email');
     bool remember = pref.getBool('rememberMe') ?? false;
 
-    if (usser!.isNotEmpty && remember) {
+    if (usser != null && usser.isNotEmpty && remember) {
       // ignore: use_build_context_synchronously
       Navigator.pushReplacement(
           context, MaterialPageRoute(builder: ((context) => const Home())));
     } else {
       setState(() {
-        email.text = usser;
+        email.text = usser.toString();
         rememberMe = remember;
       });
     }

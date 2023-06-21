@@ -36,12 +36,13 @@ class _LoginState extends State<Login> {
 
   void loadUser() async {
     final pref = await SharedPreferences.getInstance();
-    String? usser = pref.getString('email');
+    var usser = pref.getString('email');
     bool remember = pref.getBool('rememberMe') ?? false;
 
     if (usser!.isNotEmpty && remember) {
+      // ignore: use_build_context_synchronously
       Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: ((context) => Home())));
+          context, MaterialPageRoute(builder: ((context) => const Home())));
     } else {
       setState(() {
         email.text = usser;
@@ -69,6 +70,7 @@ class _LoginState extends State<Login> {
         email: email.text,
         password: password.text,
       );
+      // ignore: use_build_context_synchronously
       Navigator.push(
         context,
         MaterialPageRoute(
@@ -90,6 +92,7 @@ class _LoginState extends State<Login> {
         );
       }
     } catch (e) {
+      // ignore: avoid_print
       print(e);
     }
   }
@@ -227,7 +230,7 @@ class _LoginState extends State<Login> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => RegisterPage(),
+                          builder: (context) => const RegisterPage(),
                         ),
                       );
                     },

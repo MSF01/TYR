@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tyr/Pages/login_page.dart';
 import 'package:tyr/components/textfield.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
@@ -26,6 +26,8 @@ class _RegisterPageState extends State<RegisterPage> {
           email: email.text,
           password: password.text,
         );
+        final pref = await SharedPreferences.getInstance();
+        pref.setString('username', username.text);
         // ignore: use_build_context_synchronously
         Navigator.push(
           context,

@@ -47,11 +47,31 @@ class _HomeState extends State<Home> {
       body: Center(
         child: Column(
           children: [
-            const SizedBox(height: 225),
-            Text('Welcome Back ' + username),
-            const SizedBox(
-              height: 15,
+            const SizedBox(height: 70),
+            Padding(
+              padding: const EdgeInsets.only(right: 150.0),
+              child: Text(
+                'Welcome Back $username',
+                style: TextStyle(
+                  fontSize: 30,
+                  fontWeight: FontWeight.w600,
+                  fontFamily: GoogleFonts.barlowCondensed().fontFamily,
+                ),
+              ),
             ),
+            const SizedBox(height: 50),
+            const Padding(
+              padding: const EdgeInsets.only(left: 20.0),
+              child: Row(
+                children: [
+                  Text(
+                    'Test Data',
+                    style: TextStyle(fontSize: 28),
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(height: 80),
             ElevatedButton(
               onPressed: () async {
                 signOut();

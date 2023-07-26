@@ -60,13 +60,41 @@ class _HomeState extends State<Home> {
               ),
             ),
             const SizedBox(height: 50),
-            const Padding(
-              padding: const EdgeInsets.only(left: 20.0),
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
               child: Row(
                 children: [
-                  Text(
-                    'Test Data',
-                    style: TextStyle(fontSize: 28),
+                  Card(
+                    elevation: 5,
+                    child: InkWell(
+                      onTap: () {},
+                      child: const SizedBox(
+                        width: 300,
+                        height: 100,
+                        child: Center(
+                          child: Text(
+                            'Elevated Card',
+                            style: TextStyle(fontSize: 20),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Card(
+                    elevation: 5,
+                    child: InkWell(
+                      onTap: () {},
+                      child: const SizedBox(
+                        width: 300,
+                        height: 100,
+                        child: Center(
+                          child: Text(
+                            'Elevated Card',
+                            style: TextStyle(fontSize: 20),
+                          ),
+                        ),
+                      ),
+                    ),
                   ),
                 ],
               ),

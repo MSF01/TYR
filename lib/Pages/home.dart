@@ -65,38 +65,8 @@ class _HomeState extends State<Home> {
               scrollDirection: Axis.horizontal,
               child: Row(
                 children: [
-                  Card(
-                    elevation: 5,
-                    child: InkWell(
-                      onTap: () {},
-                      child: const SizedBox(
-                        width: 300,
-                        height: 100,
-                        child: Center(
-                          child: Text(
-                            'Elevated Card',
-                            style: TextStyle(fontSize: 20),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  Card(
-                    elevation: 5,
-                    child: InkWell(
-                      onTap: () {},
-                      child: const SizedBox(
-                        width: 300,
-                        height: 100,
-                        child: Center(
-                          child: Text(
-                            'Elevated Card',
-                            style: TextStyle(fontSize: 20),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
+                  TheCard(onTap: () {}, description: 'Elevated Card'),
+                  TheCard(onTap: () {}, description: 'Elevated Card'),
                   TheCard(
                       onTap: () {
                         print('Hello World');

@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tyr/Pages/login_page.dart';
+import 'package:tyr/components/card.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -59,7 +60,7 @@ class _HomeState extends State<Home> {
                 ),
               ),
             ),
-            const SizedBox(height: 50),
+            const SizedBox(height: 50, width: 5),
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: Row(
@@ -96,6 +97,11 @@ class _HomeState extends State<Home> {
                       ),
                     ),
                   ),
+                  TheCard(
+                      onTap: () {
+                        print('Hello World');
+                      },
+                      description: 'description')
                 ],
               ),
             ),

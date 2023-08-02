@@ -60,18 +60,28 @@ class _HomeState extends State<Home> {
                 ),
               ),
             ),
-            const SizedBox(height: 50, width: 5),
+            const SizedBox(height: 50),
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: Row(
                 children: [
-                  TheCard(onTap: () {}, description: 'Elevated Card'),
-                  TheCard(onTap: () {}, description: 'Elevated Card'),
+                  const SizedBox(width: 10),
                   TheCard(
-                      onTap: () {
-                        print('Hello World');
-                      },
-                      description: 'description')
+                      onTap: () {},
+                      title: 'Card 1',
+                      description: 'This is a description'),
+                  TheCard(
+                      onTap: () {},
+                      title: 'Card 2',
+                      description: 'This is a description'),
+                  TheCard(
+                      onTap: () {},
+                      title: 'Card 3',
+                      description: 'This is a description'),
+                  TheCard(
+                      onTap: () {},
+                      title: 'Card 4',
+                      description: 'This is a description'),
                 ],
               ),
             ),

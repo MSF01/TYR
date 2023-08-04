@@ -5,7 +5,7 @@ class TheCard extends StatelessWidget {
   final String description;
   final Function() onTap;
 
-  TheCard(
+  const TheCard(
       {super.key,
       required this.onTap,
       required this.title,
@@ -14,7 +14,7 @@ class TheCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      elevation: 5,
+      elevation: 8,
       child: InkWell(
         onTap: onTap,
         child: SizedBox(

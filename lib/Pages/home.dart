@@ -45,66 +45,67 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Column(
-          children: [
-            const SizedBox(height: 70),
-            Padding(
-              padding: const EdgeInsets.only(right: 150.0),
-              child: Text(
-                'Welcome Back $username',
-                style: TextStyle(
-                  fontSize: 30,
-                  fontWeight: FontWeight.w600,
-                  fontFamily: GoogleFonts.barlowCondensed().fontFamily,
-                ),
+      body: Column(
+        children: [
+          const SizedBox(height: 70),
+          Padding(
+            padding: const EdgeInsets.only(right: 220),
+            child: Text(
+              'Hey! $username',
+              style: TextStyle(
+                fontSize: 31,
+                fontWeight: FontWeight.w500,
+                fontFamily: GoogleFonts.acme.toString(),
               ),
             ),
-            const SizedBox(height: 20),
-            Text('Your Feed', style: TextStyle(fontSize: 24)),
-            const SizedBox(height: 20),
-            SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                children: [
-                  const SizedBox(width: 10),
-                  TheCard(
-                      onTap: () {},
-                      title: 'Card 1',
-                      description: 'This is a description'),
-                  TheCard(
-                      onTap: () {},
-                      title: 'Card 2',
-                      description: 'This is a description'),
-                  TheCard(
-                      onTap: () {},
-                      title: 'Card 3',
-                      description: 'This is a description'),
-                  TheCard(
-                      onTap: () {},
-                      title: 'Card 4',
-                      description: 'This is a description'),
-                ],
-              ),
+          ),
+          const SizedBox(height: 20),
+          const Padding(
+            padding: EdgeInsets.only(right: 260.0),
+            child: Text('Your Feed', style: TextStyle(fontSize: 24)),
+          ),
+          const SizedBox(height: 20),
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              children: [
+                const SizedBox(width: 10),
+                TheCard(
+                    onTap: () {},
+                    title: 'Card 1',
+                    description: 'This is a description'),
+                TheCard(
+                    onTap: () {},
+                    title: 'Card 2',
+                    description: 'This is a description'),
+                TheCard(
+                    onTap: () {},
+                    title: 'Card 3',
+                    description: 'This is a description'),
+                TheCard(
+                    onTap: () {},
+                    title: 'Card 4',
+                    description: 'This is a description'),
+              ],
             ),
-            const SizedBox(height: 80),
-            ElevatedButton(
-              onPressed: () async {
-                signOut();
-              },
-              style: ElevatedButton.styleFrom(
-                textStyle: const TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
-                backgroundColor: Colors.black,
-                foregroundColor: Colors.white,
-                padding: const EdgeInsets.fromLTRB(35, 16, 35, 16),
+          ),
+          const SizedBox(height: 80),
+          ElevatedButton(
+            onPressed: () async {
+              signOut();
+            },
+            style: ElevatedButton.styleFrom(
+              textStyle: const TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
               ),
-              child: const Text('Sign Out'),
+              backgroundColor: Colors.black,
+              foregroundColor: Colors.white,
+              padding: const EdgeInsets.fromLTRB(35, 16, 35, 16),
             ),
-          ],
-        ),
+            child: const Text('Sign Out'),
+          ),
+        ],
       ),
     );
   }

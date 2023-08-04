@@ -60,7 +60,9 @@ class _HomeState extends State<Home> {
                 ),
               ),
             ),
-            const SizedBox(height: 50),
+            const SizedBox(height: 20),
+            Text('Your Feed', style: TextStyle(fontSize: 24)),
+            const SizedBox(height: 20),
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: Row(

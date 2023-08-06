@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 class TheTextField extends StatelessWidget {
-  dynamic controller;
+  final controller;
   final String hint;
   final bool obsecure;
-  dynamic fillColor;
+  final fillColor;
 
   TheTextField({
     super.key,

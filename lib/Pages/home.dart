@@ -45,9 +45,14 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        title: Center(child: Text('Track Your Routine')),
+      ),
       body: Column(
         children: [
-          const SizedBox(height: 70),
+          const SizedBox(height: 50),
           Padding(
             padding: const EdgeInsets.only(right: 220),
             child: Text(
@@ -71,25 +76,29 @@ class _HomeState extends State<Home> {
               children: [
                 const SizedBox(width: 10),
                 TheCard(
-                    onTap: () {},
-                    title: 'Card 1',
-                    description: 'This is a description'),
+                  onTap: () {},
+                  title: 'Card 1',
+                  description: 'This is a description',
+                ),
                 TheCard(
-                    onTap: () {},
-                    title: 'Card 2',
-                    description: 'This is a description'),
+                  onTap: () {},
+                  title: 'Card 2',
+                  description: 'This is a description',
+                ),
                 TheCard(
-                    onTap: () {},
-                    title: 'Card 3',
-                    description: 'This is a description'),
+                  onTap: () {},
+                  title: 'Card 3',
+                  description: 'This is a description',
+                ),
                 TheCard(
-                    onTap: () {},
-                    title: 'Card 4',
-                    description: 'This is a description'),
+                  onTap: () {},
+                  title: 'Card 4',
+                  description: 'This is a description',
+                ),
               ],
             ),
           ),
-          const SizedBox(height: 80),
+          const SizedBox(height: 30),
           ElevatedButton(
             onPressed: () async {
               signOut();

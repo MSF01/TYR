@@ -48,11 +48,13 @@ class _HomeState extends State<Home> {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        title: Center(child: Text('Track Your Routine')),
+        title: Text('Track Your Routine'),
+        centerTitle: true,
+        automaticallyImplyLeading: false,
       ),
       body: Column(
         children: [
-          const SizedBox(height: 50),
+          const SizedBox(height: 20),
           Padding(
             padding: const EdgeInsets.only(right: 220),
             child: Text(

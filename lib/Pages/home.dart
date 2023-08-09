@@ -45,22 +45,27 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: Drawer(
-        child: ListView(
-          // padding: EdgeInsets.zero,
-          children: [
-            ListTile(
-              leading: const Icon(Icons.home),
-              title: Text(
-                'Home',
-                style: TextStyle(
-                  fontSize: 22,
-                  fontFamily: GoogleFonts.alata().fontFamily,
+      drawer: Container(
+        width: MediaQuery.of(context).size.width * 0.5,
+        child: Drawer(
+          child: ListView(
+            // padding: EdgeInsets.zero,
+            children: <Widget>[
+              UserAccountsDrawerHeader(
+                  accountName: Text(username), accountEmail: Text('lol')),
+              ListTile(
+                leading: const Icon(Icons.home),
+                title: Text(
+                  'Home',
+                  style: TextStyle(
+                    fontSize: 22,
+                    fontFamily: GoogleFonts.alata().fontFamily,
+                  ),
                 ),
-              ),
-              onTap: () {},
-            )
-          ],
+                onTap: () {},
+              )
+            ],
+          ),
         ),
       ),
       appBar: AppBar(

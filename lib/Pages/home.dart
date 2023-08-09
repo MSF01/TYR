@@ -45,12 +45,30 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: Drawer(
+        child: ListView(
+          // padding: EdgeInsets.zero,
+          children: [
+            ListTile(
+              leading: const Icon(Icons.home),
+              title: Text(
+                'Home',
+                style: TextStyle(
+                  fontSize: 22,
+                  fontFamily: GoogleFonts.alata().fontFamily,
+                ),
+              ),
+              onTap: () {},
+            )
+          ],
+        ),
+      ),
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        title: Text('Track Your Routine'),
+        title: const Text('Track Your Routine'),
         centerTitle: true,
-        automaticallyImplyLeading: false,
+        // leading: Icon(Icons.menu),
       ),
       body: Column(
         children: [
@@ -58,7 +76,7 @@ class _HomeState extends State<Home> {
           Padding(
             padding: const EdgeInsets.only(right: 220),
             child: Text(
-              'Hey! $username',
+              'Hey! Mate',
               style: TextStyle(
                 fontSize: 31,
                 fontWeight: FontWeight.w500,

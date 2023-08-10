@@ -5,7 +5,6 @@ import 'package:tyr/Pages/register_page.dart';
 import 'package:tyr/components/textfield.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:tyr/main.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
 bool rememberMe = false;

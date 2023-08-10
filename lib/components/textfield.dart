@@ -6,7 +6,7 @@ class TheTextField extends StatelessWidget {
   final bool obsecure;
   final fillColor;
 
-  TheTextField({
+  const TheTextField({
     super.key,
     required this.controller,
     required this.hint,

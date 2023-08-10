@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -14,17 +16,26 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   String username = '';
+  String email = '';
 
   @override
   void initState() {
     super.initState();
     getUsername();
+    getEmail();
   }
 
   Future<void> getUsername() async {
     final prefs = await SharedPreferences.getInstance();
     setState(() {
       username = prefs.getString('username') ?? '';
+    });
+  }
+
+  Future<void> getEmail() async {
+    final prefs = await SharedPreferences.getInstance();
+    setState(() {
+      email = prefs.getString('email') ?? '';
     });
   }
 
@@ -45,26 +56,43 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: Container(
-        width: MediaQuery.of(context).size.width * 0.5,
+      drawer: SizedBox(
+        width: 190.00,
         child: Drawer(
-          child: ListView(
-            // padding: EdgeInsets.zero,
-            children: <Widget>[
-              UserAccountsDrawerHeader(
-                  accountName: Text(username), accountEmail: Text('lol')),
-              ListTile(
-                leading: const Icon(Icons.home),
-                title: Text(
-                  'Home',
-                  style: TextStyle(
-                    fontSize: 22,
-                    fontFamily: GoogleFonts.alata().fontFamily,
+          backgroundColor: Colors.white70.withOpacity(0.7),
+          child: ClipRRect(
+            child: BackdropFilter(
+              filter: ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
+              child: ListView(
+                padding: EdgeInsets.zero,
+                children: <Widget>[
+                  const SizedBox(height: 70),
+                  SizedBox(
+                    height: 35,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          'Welcome: $username',
+                          style: const TextStyle(fontSize: 18),
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-                onTap: () {},
-              )
-            ],
+                  ListTile(
+                    leading: const Icon(Icons.home),
+                    title: Text(
+                      'Home',
+                      style: TextStyle(
+                        fontSize: 22,
+                        fontFamily: GoogleFonts.alata().fontFamily,
+                      ),
+                    ),
+                    onTap: () {},
+                  )
+                ],
+              ),
+            ),
           ),
         ),
       ),
@@ -81,7 +109,7 @@ class _HomeState extends State<Home> {
           Padding(
             padding: const EdgeInsets.only(right: 220),
             child: Text(
-              'Hey! Mate',
+              'Hey! $username',
               style: TextStyle(
                 fontSize: 31,
                 fontWeight: FontWeight.w500,

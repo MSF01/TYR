@@ -57,12 +57,12 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: SizedBox(
-        width: 190.00,
+        width: MediaQuery.of(context).size.width * 0.5,
         child: Drawer(
-          backgroundColor: Colors.white70.withOpacity(0.7),
+          backgroundColor: Colors.white.withOpacity(0.7),
           child: ClipRRect(
             child: BackdropFilter(
-              filter: ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
+              filter: ImageFilter.blur(sigmaX: 3.0, sigmaY: 3.0),
               child: ListView(
                 padding: EdgeInsets.zero,
                 children: <Widget>[
@@ -74,11 +74,15 @@ class _HomeState extends State<Home> {
                       children: [
                         Text(
                           'Welcome: $username',
-                          style: const TextStyle(fontSize: 18),
+                          style: TextStyle(
+                            fontSize: 22,
+                            fontFamily: GoogleFonts.alata().fontFamily,
+                          ),
                         ),
                       ],
                     ),
                   ),
+                  const SizedBox(height: 25),
                   ListTile(
                     leading: const Icon(Icons.home),
                     title: Text(
@@ -89,7 +93,53 @@ class _HomeState extends State<Home> {
                       ),
                     ),
                     onTap: () {},
-                  )
+                  ),
+                  ListTile(
+                    leading: const Icon(Icons.person_2_outlined),
+                    title: Text(
+                      'Profile',
+                      style: TextStyle(
+                        fontSize: 22,
+                        fontFamily: GoogleFonts.alata().fontFamily,
+                      ),
+                    ),
+                    onTap: () {},
+                  ),
+                  ListTile(
+                    leading: const Icon(Icons.settings),
+                    title: Text(
+                      'Settings',
+                      style: TextStyle(
+                        fontSize: 22,
+                        fontFamily: GoogleFonts.alata().fontFamily,
+                      ),
+                    ),
+                    onTap: () {},
+                  ),
+                  const SizedBox(height: 25),
+                  ListTile(
+                    leading: const Icon(Icons.info_outline),
+                    title: Text(
+                      'About',
+                      style: TextStyle(
+                        fontSize: 22,
+                        fontFamily: GoogleFonts.alata().fontFamily,
+                      ),
+                    ),
+                  ),
+                  ListTile(
+                    leading: const Icon(Icons.exit_to_app_outlined),
+                    title: Text(
+                      'Logout',
+                      style: TextStyle(
+                        fontSize: 22,
+                        fontFamily: GoogleFonts.alata().fontFamily,
+                      ),
+                    ),
+                    onTap: () async {
+                      signOut();
+                    },
+                  ),
                 ],
               ),
             ),
@@ -152,21 +202,6 @@ class _HomeState extends State<Home> {
             ),
           ),
           const SizedBox(height: 30),
-          ElevatedButton(
-            onPressed: () async {
-              signOut();
-            },
-            style: ElevatedButton.styleFrom(
-              textStyle: const TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
-              backgroundColor: Colors.black,
-              foregroundColor: Colors.white,
-              padding: const EdgeInsets.fromLTRB(35, 16, 35, 16),
-            ),
-            child: const Text('Sign Out'),
-          ),
         ],
       ),
     );

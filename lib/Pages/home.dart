@@ -64,7 +64,7 @@ class _HomeState extends State<Home> {
             child: BackdropFilter(
               filter: ImageFilter.blur(sigmaX: 3.0, sigmaY: 3.0),
               child: ListView(
-                padding: EdgeInsets.zero,
+                padding: const EdgeInsets.all(5),
                 children: <Widget>[
                   const SizedBox(height: 70),
                   SizedBox(
@@ -84,7 +84,7 @@ class _HomeState extends State<Home> {
                   ),
                   const SizedBox(height: 25),
                   ListTile(
-                    leading: const Icon(Icons.home),
+                    leading: const Icon(Icons.home_outlined),
                     title: Text(
                       'Home',
                       style: TextStyle(
@@ -103,10 +103,12 @@ class _HomeState extends State<Home> {
                         fontFamily: GoogleFonts.alata().fontFamily,
                       ),
                     ),
-                    onTap: () {},
+                    onTap: () {
+                      setState(() {});
+                    },
                   ),
                   ListTile(
-                    leading: const Icon(Icons.settings),
+                    leading: const Icon(Icons.settings_outlined),
                     title: Text(
                       'Settings',
                       style: TextStyle(
@@ -116,7 +118,11 @@ class _HomeState extends State<Home> {
                     ),
                     onTap: () {},
                   ),
-                  const SizedBox(height: 25),
+                  const Divider(
+                    // thickness: 1.5,
+                    color: Colors.black54,
+                  ),
+                  const SizedBox(height: 5),
                   ListTile(
                     leading: const Icon(Icons.info_outline),
                     title: Text(

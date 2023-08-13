@@ -1,10 +1,8 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tyr/components/app_drawer.dart';
 import 'package:tyr/components/card.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -20,12 +18,20 @@ class _HomeState extends State<Home> {
   @override
   void initState() {
     super.initState();
+    getUsername();
+  }
+
+  Future<void> getUsername() async {
+    final prefs = await SharedPreferences.getInstance();
+    setState(() {
+      username = prefs.getString('username') ?? '';
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: Appdraw(),
+      drawer: const Appdraw(),
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
@@ -34,10 +40,11 @@ class _HomeState extends State<Home> {
         // leading: Icon(Icons.menu),
       ),
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const SizedBox(height: 20),
           Padding(
-            padding: const EdgeInsets.only(right: 220),
+            padding: const EdgeInsets.all(9.0),
             child: Text(
               'Hey! $username',
               style: TextStyle(
@@ -47,12 +54,12 @@ class _HomeState extends State<Home> {
               ),
             ),
           ),
-          const SizedBox(height: 20),
+          const SizedBox(height: 8),
           const Padding(
-            padding: EdgeInsets.only(right: 260.0),
-            child: Text('Your Feed', style: TextStyle(fontSize: 24)),
+            padding: EdgeInsets.all(9.0),
+            child: Text('Your Feed:', style: TextStyle(fontSize: 24)),
           ),
-          const SizedBox(height: 20),
+          const SizedBox(height: 5),
           SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: Row(

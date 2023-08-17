@@ -13,13 +13,23 @@ class _CurrentUserState extends State<CurrentUser> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: Appdraw(),
+      drawer: const Appdraw(),
       appBar: AppBar(
         title: const Text('Profile'),
         backgroundColor: Colors.transparent,
         elevation: 0,
+        centerTitle: true,
       ),
-      body: Text('The text'),
+      body: Column(
+        children: [
+          Center(
+            child: Icon(
+              Icons.account_circle_outlined,
+              size: 24,
+            ),
+          )
+        ],
+      ),
     );
   }
 }

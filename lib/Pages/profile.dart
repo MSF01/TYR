@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:tyr/Pages/home.dart';
 
 import '../components/app_drawer.dart';
 
@@ -20,15 +22,24 @@ class _CurrentUserState extends State<CurrentUser> {
         elevation: 0,
         centerTitle: true,
       ),
-      body: Column(
-        children: [
-          Center(
-            child: Icon(
+      body: Center(
+        child: Column(
+          children: [
+            const SizedBox(height: 12),
+            const Icon(
               Icons.account_circle_outlined,
-              size: 24,
+              size: 130,
             ),
-          )
-        ],
+            const SizedBox(height: 10),
+            Text(
+              username,
+              style: TextStyle(
+                fontSize: 28,
+                fontFamily: GoogleFonts.alata().fontFamily,
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

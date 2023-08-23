@@ -39,9 +39,12 @@ class _CurrentUserState extends State<CurrentUser> {
               ),
             ),
             const SizedBox(height: 20),
-            ElevatedButton(
+            ElevatedButton.icon(
               onPressed: () {},
               style: ElevatedButton.styleFrom(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
                 padding: const EdgeInsets.all(14),
                 backgroundColor: Colors.black,
                 textStyle: const TextStyle(
@@ -50,7 +53,26 @@ class _CurrentUserState extends State<CurrentUser> {
                 ),
                 foregroundColor: Colors.white,
               ),
-              child: const Text('Change Username'),
+              icon: const Icon(Icons.person_add_alt_1_outlined),
+              label: const Text('Change Username'),
+            ),
+            const SizedBox(height: 20),
+            ElevatedButton.icon(
+              onPressed: () {},
+              style: ElevatedButton.styleFrom(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                padding: const EdgeInsets.all(14),
+                backgroundColor: Colors.black,
+                textStyle: const TextStyle(
+                  fontSize: 22,
+                  fontWeight: FontWeight.bold,
+                ),
+                foregroundColor: Colors.white,
+              ),
+              icon: const Icon(Icons.lock_outline_rounded),
+              label: const Text('Change Password'),
             ),
           ],
         ),

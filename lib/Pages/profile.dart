@@ -37,7 +37,21 @@ class _CurrentUserState extends State<CurrentUser> {
                 fontSize: 28,
                 fontFamily: GoogleFonts.alata().fontFamily,
               ),
-            )
+            ),
+            const SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {},
+              style: ElevatedButton.styleFrom(
+                padding: const EdgeInsets.all(14),
+                backgroundColor: Colors.black,
+                textStyle: const TextStyle(
+                  fontSize: 22,
+                  fontWeight: FontWeight.bold,
+                ),
+                foregroundColor: Colors.white,
+              ),
+              child: const Text('Change Username'),
+            ),
           ],
         ),
       ),

@@ -1,6 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tyr/Pages/home.dart';
 import 'package:tyr/Pages/login_page.dart';
 
@@ -18,6 +20,18 @@ class _CurrentUserState extends State<CurrentUser> {
   void initState() {
     super.initState();
     fetchCreationTime();
+  }
+
+  void signOut() async {
+    final pref = await SharedPreferences.getInstance();
+    pref.remove('email');
+    pref.remove('rememberMe');
+
+    FirebaseAuth.instance.signOut();
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const Login()),
+    );
   }
 
   String formatCreationTime = '';
@@ -103,11 +117,14 @@ class _CurrentUserState extends State<CurrentUser> {
             ),
             const SizedBox(height: 50),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                signOut();
+              },
               style: ElevatedButton.styleFrom(
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(12),
                 ),
+                elevation: 3,
                 padding: const EdgeInsets.all(14),
                 backgroundColor: Colors.white,
                 textStyle: const TextStyle(
@@ -119,12 +136,20 @@ class _CurrentUserState extends State<CurrentUser> {
               child: const Text('Logout'),
             ),
             const SizedBox(height: 25),
-            Text(
-              formatCreationTime,
-              style: const TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-              ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    'Joined: $formatCreationTime',
+                    style: const TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ],
             ),
           ],
         ),

@@ -9,6 +9,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 final FirebaseAuth _auth = FirebaseAuth.instance;
 bool rememberMe = false;
 
+User? userr = _auth.currentUser;
+
 class Login extends StatefulWidget {
   const Login({super.key});
 
@@ -16,10 +18,8 @@ class Login extends StatefulWidget {
   State<Login> createState() => _LoginState();
 
   Future<bool> checkUser() async {
-    User? user = _auth.currentUser;
-
     if (rememberMe == true) {
-      if (user != null) {
+      if (userr != null) {
         return true;
       }
     }

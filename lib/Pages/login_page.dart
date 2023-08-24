@@ -129,7 +129,7 @@ class _LoginState extends State<Login> {
                 child: TheTextField(
                   controller: email,
                   hint: 'Email',
-                  obsecure: false,
+                  visible: false,
                   fillColor: Colors.grey.shade200,
                 ),
               ),
@@ -139,8 +139,13 @@ class _LoginState extends State<Login> {
                 child: TheTextField(
                   controller: password,
                   hint: 'Password',
-                  obsecure: true,
+                  visible: true,
                   fillColor: Colors.grey.shade200,
+                  iconn: Icon(
+                    true
+                        ? Icons.visibility_outlined
+                        : Icons.visibility_off_outlined,
+                  ),
                 ),
               ),
               const SizedBox(height: 20),

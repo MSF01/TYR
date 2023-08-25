@@ -3,15 +3,15 @@ import 'package:flutter/material.dart';
 class TheTextField extends StatelessWidget {
   final controller;
   final String hint;
-  final bool visible;
+  final bool obsecure;
   final fillColor;
-  final Icon? iconn;
+  final IconButton? iconn;
 
   const TheTextField({
     super.key,
     required this.controller,
     required this.hint,
-    this.visible = false,
+    this.obsecure = false,
     required this.fillColor,
     this.iconn,
   });
@@ -33,19 +33,9 @@ class TheTextField extends StatelessWidget {
           hintStyle: const TextStyle(fontSize: 18),
           fillColor: fillColor,
           filled: true,
-          suffixIcon: IconButton(
-            icon: iconn ??
-                Icon(
-                  visible ? Icons.visibility : Icons.visibility_off,
-                  color: Theme.of(context).primaryColorDark,
-                ),
-            onPressed: () {
-              // Update the state to toggle the visibility of the password
-              // You'll need to handle this in the parent widget
-            },
-          ),
+          suffixIcon: iconn,
         ),
-        obscureText: visible,
+        obscureText: obsecure,
         style: const TextStyle(fontSize: 18),
       ),
     );

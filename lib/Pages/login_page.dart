@@ -129,7 +129,7 @@ class _LoginState extends State<Login> {
                 child: TheTextField(
                   controller: email,
                   hint: 'Email',
-                  visible: false,
+                  obsecure: false,
                   fillColor: Colors.grey.shade200,
                 ),
               ),
@@ -139,12 +139,13 @@ class _LoginState extends State<Login> {
                 child: TheTextField(
                   controller: password,
                   hint: 'Password',
-                  visible: true,
+                  obsecure: true,
                   fillColor: Colors.grey.shade200,
-                  iconn: Icon(
-                    true
-                        ? Icons.visibility_outlined
-                        : Icons.visibility_off_outlined,
+                  iconn: IconButton(
+                    icon: const Icon(
+                      true ? Icons.visibility : Icons.visibility_off,
+                    ),
+                    onPressed: () {},
                   ),
                 ),
               ),

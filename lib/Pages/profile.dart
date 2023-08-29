@@ -19,6 +19,7 @@ class _CurrentUserState extends State<CurrentUser> {
   @override
   void initState() {
     super.initState();
+    changeUsername();
     fetchCreationTime();
   }
 
@@ -32,6 +33,12 @@ class _CurrentUserState extends State<CurrentUser> {
       context,
       MaterialPageRoute(builder: (context) => const Login()),
     );
+  }
+
+  final changUname = TextEditingController();
+  Future<void> changeUsername() async {
+    final pref = await SharedPreferences.getInstance();
+    pref.setString('username', changUname.text);
   }
 
   String formatCreationTime = '';
@@ -81,7 +88,20 @@ class _CurrentUserState extends State<CurrentUser> {
             ),
             const SizedBox(height: 40),
             ElevatedButton.icon(
-              onPressed: () {},
+              onPressed: () {
+                showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return AlertDialog(
+                        content: Column(
+                          children: [
+                            Text('data'),
+                          ],
+                        ),
+                      );
+                    });
+                // changeUsername();
+              },
               style: ElevatedButton.styleFrom(
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(12),

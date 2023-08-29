@@ -33,7 +33,12 @@ class TheTextField extends StatelessWidget {
           hintStyle: const TextStyle(fontSize: 18),
           fillColor: fillColor,
           filled: true,
-          suffixIcon: iconn,
+          suffixIcon: IconButton(
+            icon: const Icon(
+              true ? Icons.visibility : Icons.visibility_off,
+            ),
+            onPressed: () {},
+          ),
         ),
         obscureText: obsecure,
         style: const TextStyle(fontSize: 18),

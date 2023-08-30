@@ -40,6 +40,7 @@ class _CurrentUserState extends State<CurrentUser> {
   Future<void> changeUsername() async {
     final pref = await SharedPreferences.getInstance();
     pref.setString('username', changUname.text);
+    pref.reload();
   }
 
   String formatCreationTime = '';
@@ -95,7 +96,7 @@ class _CurrentUserState extends State<CurrentUser> {
                     builder: (BuildContext context) {
                       return Center(
                         child: AlertDialog(
-                          title: const Text('Change Username'),
+                          title: const Center(child: Text('Change Username')),
                           scrollable: true,
                           content: SizedBox(
                             child: Column(
@@ -110,10 +111,11 @@ class _CurrentUserState extends State<CurrentUser> {
                                     ),
                                   ],
                                 ),
+                                const SizedBox(height: 15),
                                 SizedBox(
                                   height: 72,
                                   child: TextFormField(
-                                    decoration: InputDecoration(
+                                    decoration: const InputDecoration(
                                       enabledBorder: OutlineInputBorder(
                                         borderSide:
                                             BorderSide(color: Colors.black),
@@ -122,14 +124,60 @@ class _CurrentUserState extends State<CurrentUser> {
                                         borderSide:
                                             BorderSide(color: Colors.black),
                                       ),
-                                      fillColor: const Color(0xFFFFFFFF),
+                                      fillColor: Color(0xFFFFFFFF),
+                                      hintText: 'Enter new username',
+                                      hintStyle: TextStyle(fontSize: 18),
                                     ),
                                     style: const TextStyle(fontSize: 22),
+                                    controller: changUname,
                                   ),
                                 ),
+                                const SizedBox(height: 2),
                               ],
                             ),
                           ),
+                          actions: [
+                            ElevatedButton(
+                              onPressed: () async {
+                                // Here just pop it!
+                                Navigator.pop(context);
+                              },
+                              style: ElevatedButton.styleFrom(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(12),
+                                ),
+                                padding: const EdgeInsets.all(11.0),
+                                textStyle: const TextStyle(
+                                  fontSize: 17,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                                backgroundColor: Colors.black,
+                                foregroundColor: Colors.white,
+                              ),
+                              child: const Text('Cancel'),
+                            ),
+                            // const SizedBox(width: 15),
+                            ElevatedButton(
+                              onPressed: () async {
+                                // Call method to change username
+                                changeUsername();
+                                Navigator.pop(context);
+                              },
+                              style: ElevatedButton.styleFrom(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(12),
+                                ),
+                                padding: const EdgeInsets.all(11.0),
+                                textStyle: const TextStyle(
+                                  fontSize: 17,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                                backgroundColor: Colors.black,
+                                foregroundColor: Colors.white,
+                              ),
+                              child: const Text('Change'),
+                            ),
+                          ],
                         ),
                       );
                     });

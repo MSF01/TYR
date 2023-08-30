@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tyr/Pages/home.dart';
 import 'package:tyr/Pages/login_page.dart';
+import 'package:tyr/components/textfield.dart';
 
 import '../components/app_drawer.dart';
 
@@ -92,11 +93,43 @@ class _CurrentUserState extends State<CurrentUser> {
                 showDialog(
                     context: context,
                     builder: (BuildContext context) {
-                      return AlertDialog(
-                        content: Column(
-                          children: [
-                            Text('data'),
-                          ],
+                      return Center(
+                        child: AlertDialog(
+                          title: const Text('Change Username'),
+                          scrollable: true,
+                          content: SizedBox(
+                            child: Column(
+                              children: [
+                                const SizedBox(height: 20),
+                                const Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      'Enter Username',
+                                      style: TextStyle(fontSize: 18),
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(
+                                  height: 72,
+                                  child: TextFormField(
+                                    decoration: InputDecoration(
+                                      enabledBorder: OutlineInputBorder(
+                                        borderSide:
+                                            BorderSide(color: Colors.black),
+                                      ),
+                                      focusedBorder: OutlineInputBorder(
+                                        borderSide:
+                                            BorderSide(color: Colors.black),
+                                      ),
+                                      fillColor: const Color(0xFFFFFFFF),
+                                    ),
+                                    style: const TextStyle(fontSize: 22),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
                         ),
                       );
                     });

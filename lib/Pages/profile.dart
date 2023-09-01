@@ -23,95 +23,217 @@ class _CurrentUserState extends State<CurrentUser> {
     fetchCreationTime();
   }
 
+  void changePasswordDesign() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return Center(
+          child: AlertDialog(
+            title: const Center(child: Text('Change Password')),
+            scrollable: true,
+            content: SizedBox(
+              child: Column(
+                children: [
+                  const SizedBox(height: 20),
+                  const Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Enter current Password',
+                        style: TextStyle(fontSize: 18),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 15),
+                  SizedBox(
+                    height: 72,
+                    child: TextFormField(
+                      decoration: const InputDecoration(
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.black),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.black),
+                        ),
+                        fillColor: Color(0xFFFFFFFF),
+                        hintText: 'Enter current password',
+                        hintStyle: TextStyle(fontSize: 18),
+                      ),
+                      style: const TextStyle(fontSize: 22),
+                      controller: changUname,
+                    ),
+                  ),
+                  const SizedBox(height: 15),
+                  const Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Enter new Password',
+                        style: TextStyle(fontSize: 18),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 15),
+                  SizedBox(
+                    height: 72,
+                    child: TextFormField(
+                      decoration: const InputDecoration(
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.black),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.black),
+                        ),
+                        fillColor: Color(0xFFFFFFFF),
+                        hintText: 'Enter new password',
+                        hintStyle: TextStyle(fontSize: 18),
+                      ),
+                      style: const TextStyle(fontSize: 22),
+                      controller: changUname,
+                    ),
+                  ),
+                  const SizedBox(height: 2),
+                ],
+              ),
+            ),
+            actions: [
+              ElevatedButton(
+                onPressed: () async {
+                  // Here just pop it!
+                  Navigator.pop(context);
+                },
+                style: ElevatedButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  padding: const EdgeInsets.all(11.0),
+                  textStyle: const TextStyle(
+                    fontSize: 17,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  backgroundColor: Colors.black,
+                  foregroundColor: Colors.white,
+                ),
+                child: const Text('Cancel'),
+              ),
+              // const SizedBox(width: 15),
+              ElevatedButton(
+                onPressed: () async {
+                  // Call method to change password
+                  changeUsername();
+                  Navigator.pop(context);
+                },
+                style: ElevatedButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  padding: const EdgeInsets.all(11.0),
+                  textStyle: const TextStyle(
+                    fontSize: 17,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  backgroundColor: Colors.black,
+                  foregroundColor: Colors.white,
+                ),
+                child: const Text('Change'),
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
+
   void changeUsernameDesign() {
     showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return Center(
-            child: AlertDialog(
-              title: const Center(child: Text('Change Username')),
-              scrollable: true,
-              content: SizedBox(
-                child: Column(
-                  children: [
-                    const SizedBox(height: 20),
-                    const Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Enter Username',
-                          style: TextStyle(fontSize: 18),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 15),
-                    SizedBox(
-                      height: 72,
-                      child: TextFormField(
-                        decoration: const InputDecoration(
-                          enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.black),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.black),
-                          ),
-                          fillColor: Color(0xFFFFFFFF),
-                          hintText: 'Enter new username',
-                          hintStyle: TextStyle(fontSize: 18),
-                        ),
-                        style: const TextStyle(fontSize: 22),
-                        controller: changUname,
+      context: context,
+      builder: (BuildContext context) {
+        return Center(
+          child: AlertDialog(
+            title: const Center(child: Text('Change Username')),
+            scrollable: true,
+            content: SizedBox(
+              child: Column(
+                children: [
+                  const SizedBox(height: 20),
+                  const Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Enter Username',
+                        style: TextStyle(fontSize: 18),
                       ),
+                    ],
+                  ),
+                  const SizedBox(height: 15),
+                  SizedBox(
+                    height: 72,
+                    child: TextFormField(
+                      decoration: const InputDecoration(
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.black),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.black),
+                        ),
+                        fillColor: Color(0xFFFFFFFF),
+                        hintText: 'Enter new username',
+                        hintStyle: TextStyle(fontSize: 18),
+                      ),
+                      style: const TextStyle(fontSize: 22),
+                      controller: changUname,
                     ),
-                    const SizedBox(height: 2),
-                  ],
-                ),
+                  ),
+                  const SizedBox(height: 2),
+                ],
               ),
-              actions: [
-                ElevatedButton(
-                  onPressed: () async {
-                    // Here just pop it!
-                    Navigator.pop(context);
-                  },
-                  style: ElevatedButton.styleFrom(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    padding: const EdgeInsets.all(11.0),
-                    textStyle: const TextStyle(
-                      fontSize: 17,
-                      fontWeight: FontWeight.bold,
-                    ),
-                    backgroundColor: Colors.black,
-                    foregroundColor: Colors.white,
-                  ),
-                  child: const Text('Cancel'),
-                ),
-                // const SizedBox(width: 15),
-                ElevatedButton(
-                  onPressed: () async {
-                    // Call method to change username
-                    changeUsername();
-                    Navigator.pop(context);
-                  },
-                  style: ElevatedButton.styleFrom(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    padding: const EdgeInsets.all(11.0),
-                    textStyle: const TextStyle(
-                      fontSize: 17,
-                      fontWeight: FontWeight.bold,
-                    ),
-                    backgroundColor: Colors.black,
-                    foregroundColor: Colors.white,
-                  ),
-                  child: const Text('Change'),
-                ),
-              ],
             ),
-          );
-        });
+            actions: [
+              ElevatedButton(
+                onPressed: () async {
+                  // Here just pop it!
+                  Navigator.pop(context);
+                },
+                style: ElevatedButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  padding: const EdgeInsets.all(11.0),
+                  textStyle: const TextStyle(
+                    fontSize: 17,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  backgroundColor: Colors.black,
+                  foregroundColor: Colors.white,
+                ),
+                child: const Text('Cancel'),
+              ),
+              // const SizedBox(width: 15),
+              ElevatedButton(
+                onPressed: () async {
+                  // Call method to change username
+                  changeUsername();
+                  Navigator.pop(context);
+                },
+                style: ElevatedButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  padding: const EdgeInsets.all(11.0),
+                  textStyle: const TextStyle(
+                    fontSize: 17,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  backgroundColor: Colors.black,
+                  foregroundColor: Colors.white,
+                ),
+                child: const Text('Change'),
+              ),
+            ],
+          ),
+        );
+      },
+    );
   }
 
   void signOut() async {
@@ -202,7 +324,9 @@ class _CurrentUserState extends State<CurrentUser> {
             ),
             const SizedBox(height: 40),
             ElevatedButton.icon(
-              onPressed: () {},
+              onPressed: () {
+                changePasswordDesign();
+              },
               style: ElevatedButton.styleFrom(
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(12),

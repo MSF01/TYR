@@ -23,6 +23,35 @@ class _CurrentUserState extends State<CurrentUser> {
     fetchCreationTime();
   }
 
+  final curPwd = TextEditingController();
+  final newPwd = TextEditingController();
+
+  void changePassword() async {
+    FirebaseAuth _auth = FirebaseAuth.instance;
+    User? user = _auth.currentUser;
+    String? email = user!.email;
+
+    String? password = curPwd.text;
+    String? newPassword = newPwd.text;
+
+    try {
+      UserCredential userCredential = await FirebaseAuth.instance
+          .signInWithEmailAndPassword(email: email!, password: password);
+      user.updatePassword(newPassword).then((_) {
+        print("Successfully changed password");
+      }).catchError((error) {
+        print("Password can't be changed" + error.toString());
+        //This might happen, when the wrong password is in, the user isn't found, or if the user hasn't logged in recently.
+      });
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'user-not-found') {
+        print('No user found for that email.');
+      } else if (e.code == 'wrong-password') {
+        print('Wrong password provided for that user.');
+      }
+    }
+  }
+
   void changePasswordDesign() {
     showDialog(
       context: context,
@@ -60,7 +89,7 @@ class _CurrentUserState extends State<CurrentUser> {
                         hintStyle: TextStyle(fontSize: 18),
                       ),
                       style: const TextStyle(fontSize: 22),
-                      controller: changUname,
+                      controller: curPwd,
                     ),
                   ),
                   const SizedBox(height: 15),
@@ -89,7 +118,7 @@ class _CurrentUserState extends State<CurrentUser> {
                         hintStyle: TextStyle(fontSize: 18),
                       ),
                       style: const TextStyle(fontSize: 22),
-                      controller: changUname,
+                      controller: newPwd,
                     ),
                   ),
                   const SizedBox(height: 2),
@@ -120,7 +149,7 @@ class _CurrentUserState extends State<CurrentUser> {
               ElevatedButton(
                 onPressed: () async {
                   // Call method to change password
-                  changeUsername();
+                  changePassword();
                   Navigator.pop(context);
                 },
                 style: ElevatedButton.styleFrom(

@@ -37,7 +37,6 @@ class _HomeState extends State<Home> {
         elevation: 0,
         title: const Text('Track Your Routine'),
         centerTitle: true,
-        // leading: Icon(Icons.menu),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

@@ -66,7 +66,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '280656726585',
     projectId: 'tyr-login',
     storageBucket: 'tyr-login.appspot.com',
-    iosClientId: '280656726585-j7vbltpciek0oucsuvsfdsug4505eiao.apps.googleusercontent.com',
+    iosClientId:
+        '280656726585-j7vbltpciek0oucsuvsfdsug4505eiao.apps.googleusercontent.com',
     iosBundleId: 'com.example.tyr',
   );
 
@@ -76,7 +77,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '280656726585',
     projectId: 'tyr-login',
     storageBucket: 'tyr-login.appspot.com',
-    iosClientId: '280656726585-j7vbltpciek0oucsuvsfdsug4505eiao.apps.googleusercontent.com',
+    iosClientId:
+        '280656726585-j7vbltpciek0oucsuvsfdsug4505eiao.apps.googleusercontent.com',
     iosBundleId: 'com.example.tyr',
   );
 }

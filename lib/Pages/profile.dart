@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -26,30 +27,20 @@ class _CurrentUserState extends State<CurrentUser> {
   final curPwd = TextEditingController();
   final newPwd = TextEditingController();
 
-  void changePassword() async {
-    FirebaseAuth _auth = FirebaseAuth.instance;
-    User? user = _auth.currentUser;
-    String? email = user!.email;
+  var auth = FirebaseAuth.instance;
+  var curUser = FirebaseAuth.instance.currentUser;
 
-    String? password = curPwd.text;
-    String? newPassword = newPwd.text;
+  void changePassword({curPassword, newPassword}) async {
+    var email = FirebaseAuth.instance.currentUser!.email;
 
-    try {
-      UserCredential userCredential = await FirebaseAuth.instance
-          .signInWithEmailAndPassword(email: email!, password: password);
-      user.updatePassword(newPassword).then((_) {
-        print("Successfully changed password");
-      }).catchError((error) {
-        print("Password can't be changed" + error.toString());
-        //This might happen, when the wrong password is in, the user isn't found, or if the user hasn't logged in recently.
-      });
-    } on FirebaseAuthException catch (e) {
-      if (e.code == 'user-not-found') {
-        print('No user found for that email.');
-      } else if (e.code == 'wrong-password') {
-        print('Wrong password provided for that user.');
-      }
-    }
+    var cred =
+        EmailAuthProvider.credential(email: email!, password: curPassword);
+
+    await curUser!.reauthenticateWithCredential(cred).then((value) {
+      curUser!.updatePassword(newPassword);
+    }).catchError((error) {
+      print(error.toString());
+    });
   }
 
   void changePasswordDesign() {
@@ -149,7 +140,8 @@ class _CurrentUserState extends State<CurrentUser> {
               ElevatedButton(
                 onPressed: () async {
                   // Call method to change password
-                  changePassword();
+                  changePassword(
+                      curPassword: curPwd.text, newPassword: newPwd.text);
                   Navigator.pop(context);
                 },
                 style: ElevatedButton.styleFrom(

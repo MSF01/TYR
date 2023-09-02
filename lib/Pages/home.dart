@@ -84,6 +84,11 @@ class _HomeState extends State<Home> {
                   title: 'Card 4',
                   description: 'This is a description',
                 ),
+                TheCard(
+                  onTap: () {},
+                  title: 'Card 5',
+                  description: 'This is another card example',
+                )
               ],
             ),
           ),

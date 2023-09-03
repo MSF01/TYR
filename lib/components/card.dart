@@ -14,31 +14,16 @@ class TheCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       elevation: 8,
-      child: InkWell(
-        onTap: onTap,
-        child: SizedBox(
-          width: 200,
-          height: 100,
-          child: Column(
-            children: [
-              const SizedBox(height: 10),
-              Center(
-                child: Text(
-                  title,
-                  style: const TextStyle(fontSize: 20),
-                ),
-              ),
-              const SizedBox(height: 20),
-              Center(
-                child: Text(
-                  description,
-                  style: const TextStyle(fontSize: 18),
-                ),
-              ),
-            ],
+      child: Stack(
+        alignment: Alignment.center,
+        children: [
+          Ink.image(
+            image: NetworkImage(
+                'https://c4.wallpaperflare.com/wallpaper/427/363/780/bejeweled-bejeweled-3-beyond-reality-fantasy-art-wallpaper-preview.jpg'),
           ),
-        ),
+        ],
       ),
     );
   }

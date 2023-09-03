@@ -31,6 +31,7 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       drawer: const Appdraw(),
       appBar: AppBar(
         backgroundColor: Colors.transparent,
@@ -67,7 +68,7 @@ class _HomeState extends State<Home> {
                 TheCard(
                   onTap: () {},
                   title: 'Card 1',
-                  description: 'This is a description',
+                  description: 'This is a description this is very loing loll',
                 ),
                 TheCard(
                   onTap: () {},
@@ -79,16 +80,6 @@ class _HomeState extends State<Home> {
                   title: 'Card 3',
                   description: 'This is a description',
                 ),
-                TheCard(
-                  onTap: () {},
-                  title: 'Card 4',
-                  description: 'This is a description',
-                ),
-                TheCard(
-                  onTap: () {},
-                  title: 'Card 5',
-                  description: 'This is another card example',
-                )
               ],
             ),
           ),

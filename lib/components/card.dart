@@ -13,18 +13,29 @@ class TheCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-      elevation: 8,
-      child: Stack(
-        alignment: Alignment.center,
-        children: [
-          Ink.image(
-            image: NetworkImage(
-                'https://c4.wallpaperflare.com/wallpaper/427/363/780/bejeweled-bejeweled-3-beyond-reality-fantasy-art-wallpaper-preview.jpg'),
-          ),
-        ],
-      ),
+    return SizedBox(
+      height: 500,
+      width: 350,
+      child: Card(
+          clipBehavior: Clip.antiAlias,
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+          elevation: 8,
+          child: Column(
+            children: [
+              Stack(
+                children: [
+                  Ink.image(
+                    image: const NetworkImage(
+                      'https://images.unsplash.com/photo-1682685797743-3a7b6b8d8149?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
+                    ),
+                    height: 240,
+                    fit: BoxFit.cover,
+                  )
+                ],
+              ),
+            ],
+          )),
     );
   }
 }

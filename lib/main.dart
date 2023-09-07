@@ -21,12 +21,14 @@ class TYR extends StatelessWidget {
   static String loginRoute = "/login";
   static String onBoard = "/splash";
 
+  // final primaryText = Theme.of()
+  //           .textTheme
+  //           .apply(bodyColor: Colors.white, displayColor: Colors.white54);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(
-        primarySwatch: primarycolor,
-      ),
+      theme: ThemeData.dark(),
       debugShowCheckedModeBanner: false,
       initialRoute: onBoard,
       routes: {

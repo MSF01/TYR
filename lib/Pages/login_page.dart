@@ -103,7 +103,6 @@ class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Center(
           child: Column(
@@ -112,13 +111,11 @@ class _LoginState extends State<Login> {
               Icon(
                 Icons.person,
                 size: 100,
-                color: Colors.grey.shade900,
               ),
               const SizedBox(height: 30),
               Text(
                 'Welcome to TYR',
                 style: TextStyle(
-                  color: Colors.grey[700],
                   fontSize: 28,
                   fontFamily: GoogleFonts.lato().fontFamily,
                 ),
@@ -130,7 +127,6 @@ class _LoginState extends State<Login> {
                   controller: email,
                   hint: 'Email',
                   obsecure: false,
-                  fillColor: Colors.grey.shade200,
                 ),
               ),
               const SizedBox(height: 30),
@@ -140,7 +136,6 @@ class _LoginState extends State<Login> {
                   controller: password,
                   hint: 'Password',
                   obsecure: true,
-                  fillColor: Colors.grey.shade200,
                   iconn: IconButton(
                     icon: const Icon(
                       true ? Icons.visibility : Icons.visibility_off,
@@ -154,6 +149,7 @@ class _LoginState extends State<Login> {
                 children: [
                   const SizedBox(width: 17),
                   Checkbox(
+                    activeColor: Colors.black,
                     materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
                     value: rememberMe,
                     visualDensity: VisualDensity.compact,
@@ -166,7 +162,6 @@ class _LoginState extends State<Login> {
                     style: TextStyle(
                       fontSize: 18,
                       fontFamily: GoogleFonts.lato().fontFamily,
-                      color: Colors.grey.shade700,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -176,7 +171,6 @@ class _LoginState extends State<Login> {
                     style: TextStyle(
                       fontSize: 18,
                       fontFamily: GoogleFonts.lato().fontFamily,
-                      color: Colors.grey.shade700,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -226,7 +220,6 @@ class _LoginState extends State<Login> {
                     style: TextStyle(
                       fontFamily: GoogleFonts.lato().fontFamily,
                       fontSize: 20,
-                      color: Colors.grey.shade600,
                       fontWeight: FontWeight.w600,
                     ),
                   ),

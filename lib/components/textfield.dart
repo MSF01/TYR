@@ -4,7 +4,6 @@ class TheTextField extends StatelessWidget {
   final controller;
   final String hint;
   final bool obsecure;
-  final fillColor;
   final IconButton? iconn;
 
   const TheTextField({
@@ -12,7 +11,6 @@ class TheTextField extends StatelessWidget {
     required this.controller,
     required this.hint,
     this.obsecure = false,
-    required this.fillColor,
     this.iconn,
   });
 
@@ -31,7 +29,6 @@ class TheTextField extends StatelessWidget {
           ),
           hintText: hint,
           hintStyle: const TextStyle(fontSize: 18),
-          fillColor: fillColor,
           filled: true,
           suffixIcon: IconButton(
             icon: const Icon(

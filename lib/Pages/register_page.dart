@@ -78,28 +78,24 @@ class _RegisterPageState extends State<RegisterPage> {
                 controller: username,
                 hint: 'Username',
                 obsecure: false,
-                fillColor: const Color(0xFFFFFFFF),
               ),
               const SizedBox(height: 20),
               TheTextField(
                 controller: email,
                 hint: 'Email',
                 obsecure: false,
-                fillColor: const Color(0xFFFFFFFF),
               ),
               const SizedBox(height: 20),
               TheTextField(
                 controller: password,
                 hint: 'Password',
                 obsecure: true,
-                fillColor: const Color(0xFFFFFFFF),
               ),
               const SizedBox(height: 20),
               TheTextField(
                 controller: confirmPwd,
                 hint: 'Confirm Password',
                 obsecure: true,
-                fillColor: const Color(0xFFFFFFFF),
               ),
               const SizedBox(height: 25),
               Text(

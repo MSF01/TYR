@@ -108,7 +108,7 @@ class _LoginState extends State<Login> {
           child: Column(
             children: [
               const SizedBox(height: 120),
-              Icon(
+              const Icon(
                 Icons.person,
                 size: 100,
               ),

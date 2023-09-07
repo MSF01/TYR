@@ -27,20 +27,26 @@ class TheCard extends StatelessWidget {
               children: [
                 Ink.image(
                   image: const NetworkImage(
-                    'https://c1.wallpaperflare.com/preview/812/509/106/clock-time-old-roman.jpg',
+                    'https://wallpaperaccess.com/full/1536530.jpg',
                   ),
                   height: 240,
                   fit: BoxFit.cover,
                 ),
-                const SizedBox(height: 260),
+                const SizedBox(height: 240),
               ],
             ),
-            const Text(
-              'DATA',
-              style: TextStyle(
-                fontSize: 18,
+            Center(
+              child: Padding(
+                padding: const EdgeInsets.all(16.0).copyWith(bottom: 0),
+                child: const Text(
+                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.',
+                  softWrap: true,
+                  style: TextStyle(
+                    fontSize: 18,
+                  ),
+                ),
               ),
-            ),
+            )
           ],
         ),
       ),

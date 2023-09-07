@@ -372,7 +372,7 @@ class _CurrentUserState extends State<CurrentUser> {
                 ),
                 elevation: 3,
                 padding: const EdgeInsets.all(14),
-                backgroundColor: Colors.white,
+                backgroundColor: Colors.black,
                 textStyle: const TextStyle(
                   fontSize: 22,
                   fontWeight: FontWeight.bold,

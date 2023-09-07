@@ -58,7 +58,7 @@ class _AppdrawState extends State<Appdraw> {
       child: SizedBox(
         width: MediaQuery.of(context).size.width * 0.5,
         child: Drawer(
-          backgroundColor: Colors.white.withOpacity(0.7),
+          // backgroundColor: Colors.white.withOpacity(0.7),
           child: BackdropFilter(
             filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
             child: ListView(

@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/basic.dart';
-import 'package:flutter/src/widgets/framework.dart';
 
 class TheCard extends StatelessWidget {
   final String title;
@@ -45,8 +43,8 @@ class TheCard extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.all(16.0).copyWith(bottom: 0),
                 child: const Text(
-                  // Note: Only 170 characters can be inserted
-                  'Boost productivity with TYR: The ultimate app to track your routine. Achieve goals effortlessly and stay organized. Your personal assistant for a balanced life and more!!',
+                  // Note: Only 180 characters can be inserted
+                  'Boost productivity with TYR: The ultimate app to track your routine. Achieve goals effortlessly and stay organized. Your personal assistant for a balanced life and more!', // This line of 169 Chracters
                   softWrap: true,
                   style: TextStyle(
                     fontSize: 18,

@@ -66,18 +66,23 @@ class _HomeState extends State<Home> {
                 const SizedBox(width: 10),
                 TheCard(
                   onTap: () {},
-                  title: 'Card 1',
-                  description: 'This is a description this is very loing loll',
+                  imageLink:
+                      'https://images.unsplash.com/photo-1504197832061-98356e3dcdcf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8N3x8fGVufDB8fHx8fA%3D%3D&w=1000&q=80',
+                  description:
+                      'Boost productivity with TYR: The ultimate app to track your routine. Achieve goals effortlessly and stay organized. Your personal assistant for a balanced life and more!!lol testin',
                 ),
                 TheCard(
                   onTap: () {},
-                  title: 'Card 2',
-                  description: 'This is a description',
+                  imageLink:
+                      'https://images.unsplash.com/photo-1501139083538-0139583c060f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
+                  description:
+                      'This is a description of something probably idk',
                 ),
                 TheCard(
                   onTap: () {},
-                  title: 'Card 3',
-                  description: 'This is a description',
+                  imageLink:
+                      'https://images.unsplash.com/photo-1518281361980-b26bfd556770?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1410&q=80',
+                  description: 'This is a description also',
                 ),
               ],
             ),

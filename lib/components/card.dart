@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
 
 class TheCard extends StatelessWidget {
-  final String title;
+  final String imageLink;
   final String description;
   final Function() onTap;
 
   const TheCard(
       {super.key,
       required this.onTap,
-      required this.title,
+      required this.imageLink,
       required this.description});
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 428,
+      // By changing sizebox height of Card and text widget you can increase character limit
+      height: 450,
       width: 330,
       child: Card(
         color: Colors.black26,
@@ -29,7 +30,20 @@ class TheCard extends StatelessWidget {
                   borderRadius: BorderRadius.circular(9),
                   child: SizedBox(
                     child: Image.network(
-                      'https://images.unsplash.com/photo-1504197832061-98356e3dcdcf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8N3x8fGVufDB8fHx8fA%3D%3D&w=1000&q=80',
+                      imageLink,
+                      loadingBuilder: ((context, child, loadingProgress) {
+                        if (loadingProgress == null) return child;
+                        {
+                          return Center(
+                            child: CircularProgressIndicator(
+                              value: loadingProgress.expectedTotalBytes != null
+                                  ? loadingProgress.cumulativeBytesLoaded /
+                                      loadingProgress.expectedTotalBytes!
+                                  : null,
+                            ),
+                          );
+                        }
+                      }),
                       fit: BoxFit.cover,
                       height: 218,
                       width: 300,
@@ -42,12 +56,15 @@ class TheCard extends StatelessWidget {
             Center(
               child: Padding(
                 padding: const EdgeInsets.all(16.0).copyWith(bottom: 0),
-                child: const Text(
-                  // Note: Only 180 characters can be inserted
-                  'Boost productivity with TYR: The ultimate app to track your routine. Achieve goals effortlessly and stay organized. Your personal assistant for a balanced life and more!', // This line of 169 Chracters
-                  softWrap: true,
-                  style: TextStyle(
-                    fontSize: 18,
+                child: SizedBox(
+                  height: 125,
+                  child: Text(
+                    // Note: Only 180 characters can be inserted
+                    description, // This line of 169 Chracters
+                    softWrap: true,
+                    style: const TextStyle(
+                      fontSize: 18,
+                    ),
                   ),
                 ),
               ),

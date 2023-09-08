@@ -32,10 +32,13 @@ class TheCard extends StatelessWidget {
                     child: Image.network(
                       imageLink,
                       loadingBuilder: ((context, child, loadingProgress) {
-                        if (loadingProgress == null) return child;
-                        {
+                        // Will check if the loading progress is null, indicating that loading is complete
+                        if (loadingProgress == null) {
+                          return child; // Simply returning child widget
+                        } else {
                           return Center(
                             child: CircularProgressIndicator(
+                              // Calculating progress values based on the progress
                               value: loadingProgress.expectedTotalBytes != null
                                   ? loadingProgress.cumulativeBytesLoaded /
                                       loadingProgress.expectedTotalBytes!

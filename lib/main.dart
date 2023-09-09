@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:tyr/Pages/home.dart';
 import 'package:tyr/Pages/login_page.dart';
 import 'package:tyr/splash.dart';
-import 'color.dart';
 import 'package:firebase_core/firebase_core.dart';
 import '.firebase_options.dart';
 
@@ -28,7 +27,7 @@ class TYR extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData.dark(),
+      theme: ThemeData.dark(useMaterial3: true),
       debugShowCheckedModeBanner: false,
       initialRoute: onBoard,
       routes: {

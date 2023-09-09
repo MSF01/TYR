@@ -149,7 +149,7 @@ class _LoginState extends State<Login> {
                 children: [
                   const SizedBox(width: 17),
                   Checkbox(
-                    // activeColor: Colors.black,
+                    activeColor: Colors.white,
                     materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
                     value: rememberMe,
                     visualDensity: VisualDensity.compact,
@@ -186,7 +186,7 @@ class _LoginState extends State<Login> {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              const SizedBox(height: 12),
+              const SizedBox(height: 5),
               ElevatedButton(
                 onPressed: () async {
                   // remember
@@ -199,7 +199,8 @@ class _LoginState extends State<Login> {
                   ),
                   backgroundColor: Colors.black,
                   foregroundColor: Colors.white,
-                  padding: const EdgeInsets.fromLTRB(35, 16, 35, 16),
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 15, horizontal: 55),
                 ),
                 child: const Text('Login'),
               ),

@@ -21,8 +21,9 @@ class TheTextField extends StatelessWidget {
       child: TextFormField(
         controller: controller,
         decoration: InputDecoration(
-          enabledBorder: const OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.black),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(15),
+            borderSide: const BorderSide(color: Colors.black),
           ),
           focusedBorder: const OutlineInputBorder(
             borderSide: BorderSide(color: Colors.black),

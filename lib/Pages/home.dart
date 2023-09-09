@@ -65,11 +65,13 @@ class _HomeState extends State<Home> {
               children: [
                 const SizedBox(width: 10),
                 TheCard(
-                  onTap: () {},
+                  onTap: () {
+                    print('A Card has been clicked');
+                  },
                   imageLink:
                       'https://images.unsplash.com/photo-1504197832061-98356e3dcdcf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8N3x8fGVufDB8fHx8fA%3D%3D&w=1000&q=80',
                   description:
-                      'Boost productivity with TYR: The ultimate app to track your routine. Achieve goals effortlessly and stay organized. Your personal assistant for a balanced life and more!!lol testin',
+                      'Boost productivity with TYR: The ultimate app to track your routine. Achieve goals effortlessly and stay organized. Your personal assistant for a balanced life and more!!lol testing',
                 ),
                 TheCard(
                   onTap: () {},

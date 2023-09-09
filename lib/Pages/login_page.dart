@@ -149,7 +149,7 @@ class _LoginState extends State<Login> {
                 children: [
                   const SizedBox(width: 17),
                   Checkbox(
-                    activeColor: Colors.black,
+                    // activeColor: Colors.black,
                     materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
                     value: rememberMe,
                     visualDensity: VisualDensity.compact,
@@ -207,7 +207,12 @@ class _LoginState extends State<Login> {
               Row(
                 children: [
                   Expanded(
-                    child: Divider(thickness: 0.5, color: Colors.grey[500]),
+                    child: Divider(
+                      thickness: 0.5,
+                      color: Colors.grey[500],
+                      indent: 100,
+                      endIndent: 100,
+                    ),
                   ),
                 ],
               ),

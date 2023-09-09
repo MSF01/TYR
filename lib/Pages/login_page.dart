@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:tyr/Pages/home.dart';
 import 'package:tyr/Pages/register_page.dart';
+import 'package:tyr/components/password_textfield.dart';
 import 'package:tyr/components/textfield.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -126,22 +127,14 @@ class _LoginState extends State<Login> {
                 child: TheTextField(
                   controller: email,
                   hint: 'Email',
-                  obsecure: false,
                 ),
               ),
               const SizedBox(height: 30),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 5.0),
-                child: TheTextField(
+                child: PasswordTextField(
                   controller: password,
                   hint: 'Password',
-                  obsecure: true,
-                  iconn: IconButton(
-                    icon: const Icon(
-                      true ? Icons.visibility : Icons.visibility_off,
-                    ),
-                    onPressed: () {},
-                  ),
                 ),
               ),
               const SizedBox(height: 20),

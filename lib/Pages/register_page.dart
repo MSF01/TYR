@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tyr/Pages/login_page.dart';
+import 'package:tyr/components/password_textfield.dart';
 import 'package:tyr/components/textfield.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -77,25 +78,21 @@ class _RegisterPageState extends State<RegisterPage> {
               TheTextField(
                 controller: username,
                 hint: 'Username',
-                obsecure: false,
               ),
               const SizedBox(height: 20),
               TheTextField(
                 controller: email,
                 hint: 'Email',
-                obsecure: false,
               ),
               const SizedBox(height: 20),
-              TheTextField(
+              PasswordTextField(
                 controller: password,
                 hint: 'Password',
-                obsecure: true,
               ),
               const SizedBox(height: 20),
-              TheTextField(
+              PasswordTextField(
                 controller: confirmPwd,
                 hint: 'Confirm Password',
-                obsecure: true,
               ),
               const SizedBox(height: 25),
               Text(

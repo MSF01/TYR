@@ -47,7 +47,7 @@ class _HomeState extends State<Home> {
             child: Text(
               'Hey! $username',
               style: TextStyle(
-                fontSize: 31,
+                fontSize: 32,
                 fontWeight: FontWeight.w500,
                 fontFamily: GoogleFonts.acme.toString(),
               ),

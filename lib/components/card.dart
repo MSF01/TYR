@@ -20,7 +20,7 @@ class TheCard extends StatelessWidget {
       child: InkWell(
         onTap: onTap,
         child: Card(
-          color: Colors.black26,
+          color: Colors.black87,
           clipBehavior: Clip.antiAlias,
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),

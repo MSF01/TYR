@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:tyr/Pages/create_task.dart';
 import 'package:tyr/components/app_drawer.dart';
 import 'package:tyr/components/card.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -98,15 +99,21 @@ class _HomeState extends State<Home> {
             const SizedBox(height: 30),
             const Padding(
               padding: EdgeInsets.all(9.0),
-              child: Text('Tips To Improve', style: TextStyle(fontSize: 24)),
+              child: Text('Create a new task', style: TextStyle(fontSize: 24)),
             ),
             const SizedBox(height: 8),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: ElevatedButton(
-                onPressed: () {},
+                style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.black,
+                    foregroundColor: Colors.white),
+                onPressed: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: ((context) => const CreateTask())));
+                },
                 child: const Text(
-                  'Click me',
+                  'Click me to create',
                   style: TextStyle(fontSize: 16),
                 ),
               ),

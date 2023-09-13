@@ -109,8 +109,11 @@ class _HomeState extends State<Home> {
                     backgroundColor: Colors.black,
                     foregroundColor: Colors.white),
                 onPressed: () {
-                  Navigator.of(context).push(MaterialPageRoute(
-                      builder: ((context) => const CreateTask())));
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: ((context) => const CreateTask()),
+                    ),
+                  );
                 },
                 child: const Text(
                   'Click me to create',

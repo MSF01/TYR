@@ -69,20 +69,32 @@ class _CreateTaskState extends State<CreateTask> {
             ),
             const SizedBox(height: 25),
             const Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 30),
+              padding: EdgeInsets.symmetric(horizontal: 30),
               child: Text(
                 'Description',
                 style: TextStyle(fontSize: 18),
               ),
             ),
             const SizedBox(height: 15),
-            SizedBox(
-              height: 250,
-              child: TheTextField(
-                controller: createDescription,
-                hint: 'Enter Description Here...',
-                size: 18,
-                lines: 5,
+            TheTextField(
+              controller: createDescription,
+              hint: 'Enter Description Here...',
+              size: 18,
+              lines: 5,
+            ),
+            const SizedBox(height: 25),
+            Center(
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.black,
+                    foregroundColor: Colors.white),
+                onPressed: () {
+                  print('Button is working');
+                },
+                child: const Text(
+                  'Create',
+                  style: TextStyle(fontSize: 20),
+                ),
               ),
             ),
           ],

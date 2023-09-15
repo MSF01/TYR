@@ -8,6 +8,7 @@ class TheTextField extends StatelessWidget {
   final double? size;
   final int? lines;
   final Function()? onTap;
+  final bool readOnly;
 
   const TheTextField({
     super.key,
@@ -18,6 +19,7 @@ class TheTextField extends StatelessWidget {
     required this.size,
     this.lines,
     this.onTap,
+    required this.readOnly,
   });
 
   @override
@@ -43,6 +45,7 @@ class TheTextField extends StatelessWidget {
           filled: true,
         ),
         maxLines: lines,
+        readOnly: readOnly,
         onTap: onTap,
         style: TextStyle(fontSize: size),
       ),

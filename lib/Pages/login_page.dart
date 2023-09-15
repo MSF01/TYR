@@ -125,6 +125,7 @@ class _LoginState extends State<Login> {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 5.0),
                 child: TheTextField(
+                  readOnly: false,
                   controller: email,
                   hint: 'Email',
                   size: 18,

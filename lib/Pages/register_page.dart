@@ -76,12 +76,14 @@ class _RegisterPageState extends State<RegisterPage> {
               ),
               const SizedBox(height: 50),
               TheTextField(
+                readOnly: false,
                 controller: username,
                 hint: 'Username',
                 size: 18,
               ),
               const SizedBox(height: 20),
-              TheTextField(controller: email, hint: 'Email', size: 18),
+              TheTextField(
+                  readOnly: false, controller: email, hint: 'Email', size: 18),
               const SizedBox(height: 20),
               PasswordTextField(
                 controller: password,

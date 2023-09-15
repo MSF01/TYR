@@ -50,6 +50,7 @@ class _CreateTaskState extends State<CreateTask> {
             ),
             const SizedBox(height: 20),
             TheTextField(
+              readOnly: false,
               controller: createTask,
               hint: 'Enter new plan',
               size: 18,
@@ -71,6 +72,7 @@ class _CreateTaskState extends State<CreateTask> {
                 hint: '',
                 size: 18,
                 sufIcon: const Icon(Icons.calendar_month_outlined),
+                readOnly: true,
                 onTap: () {
                   datePicker();
                 },
@@ -83,6 +85,7 @@ class _CreateTaskState extends State<CreateTask> {
                 controller: pickTime,
                 hint: '',
                 size: 18,
+                readOnly: false,
                 sufIcon: const Icon(Icons.timer_outlined),
               ),
             ),
@@ -96,6 +99,7 @@ class _CreateTaskState extends State<CreateTask> {
             ),
             const SizedBox(height: 15),
             TheTextField(
+              readOnly: false,
               controller: createDescription,
               hint: 'Enter Description Here...',
               size: 18,

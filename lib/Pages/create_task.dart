@@ -14,28 +14,56 @@ class _CreateTaskState extends State<CreateTask> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Create a new task')),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const SizedBox(height: 10),
-          Padding(
-            padding: const EdgeInsets.all(12.0),
-            child: const Text(
-              'Title',
-              style: TextStyle(fontSize: 16),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const SizedBox(height: 10),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 30.0),
+              child: Text(
+                'Title',
+                style: TextStyle(fontSize: 18),
+              ),
             ),
-          ),
-          const SizedBox(height: 10),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 3.0),
-            child: TheTextField(
+            const SizedBox(height: 10),
+            TheTextField(
               controller: createTask,
               hint: 'Enter new plan',
               size: 18,
-              icon: Icon(Icons.calendar_month_outlined),
+              preIcon: const Icon(Icons.edit_outlined),
             ),
-          )
-        ],
+            const SizedBox(height: 20),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 30.0),
+              child: Text(
+                'Date & Time',
+                style: TextStyle(fontSize: 18),
+              ),
+            ),
+            const SizedBox(height: 10),
+            SizedBox(
+              width: 210,
+              child: TheTextField(
+                controller: createTask,
+                hint: '01/01/2000',
+                size: 18,
+                sufIcon: const Icon(Icons.calendar_month_outlined),
+              ),
+            ),
+            const SizedBox(height: 15),
+            SizedBox(
+              width: 210,
+              child: TheTextField(
+                controller: createTask,
+                hint: '01/01/2000',
+                size: 18,
+                sufIcon: const Icon(Icons.calendar_month_outlined),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

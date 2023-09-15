@@ -3,14 +3,16 @@ import 'package:flutter/material.dart';
 class TheTextField extends StatelessWidget {
   final controller;
   final String hint;
-  final Icon? icon;
+  final Icon? preIcon;
+  final Icon? sufIcon;
   final double? size;
 
   const TheTextField({
     super.key,
     required this.controller,
     required this.hint,
-    this.icon,
+    this.preIcon,
+    this.sufIcon,
     required this.size,
   });
 
@@ -30,7 +32,8 @@ class TheTextField extends StatelessWidget {
             borderSide: const BorderSide(color: Colors.black),
             borderRadius: BorderRadius.circular(15),
           ),
-          prefixIcon: icon,
+          prefixIcon: preIcon,
+          suffixIcon: sufIcon,
           hintText: hint,
           hintStyle: TextStyle(fontSize: size),
           filled: true,

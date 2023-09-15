@@ -3,15 +3,15 @@ import 'package:flutter/material.dart';
 class TheTextField extends StatelessWidget {
   final controller;
   final String hint;
-  final IconButton? iconn;
+  final Icon? icon;
   final double? size;
 
   const TheTextField({
     super.key,
     required this.controller,
     required this.hint,
-    this.iconn,
-    this.size,
+    this.icon,
+    required this.size,
   });
 
   @override
@@ -19,6 +19,7 @@ class TheTextField extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 25.0),
       child: TextFormField(
+        textAlign: TextAlign.start,
         controller: controller,
         decoration: InputDecoration(
           enabledBorder: OutlineInputBorder(
@@ -29,8 +30,9 @@ class TheTextField extends StatelessWidget {
             borderSide: const BorderSide(color: Colors.black),
             borderRadius: BorderRadius.circular(15),
           ),
+          prefixIcon: icon,
           hintText: hint,
-          hintStyle: const TextStyle(fontSize: 18),
+          hintStyle: TextStyle(fontSize: size),
           filled: true,
         ),
         style: TextStyle(fontSize: size),

@@ -127,6 +127,7 @@ class _LoginState extends State<Login> {
                 child: TheTextField(
                   controller: email,
                   hint: 'Email',
+                  size: 18,
                 ),
               ),
               const SizedBox(height: 30),

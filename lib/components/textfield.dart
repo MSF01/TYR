@@ -6,6 +6,7 @@ class TheTextField extends StatelessWidget {
   final Icon? preIcon;
   final Icon? sufIcon;
   final double? size;
+  final int? lines;
 
   const TheTextField({
     super.key,
@@ -14,6 +15,7 @@ class TheTextField extends StatelessWidget {
     this.preIcon,
     this.sufIcon,
     required this.size,
+    this.lines,
   });
 
   @override
@@ -38,6 +40,7 @@ class TheTextField extends StatelessWidget {
           hintStyle: TextStyle(fontSize: size),
           filled: true,
         ),
+        maxLines: lines,
         style: TextStyle(fontSize: size),
       ),
     );

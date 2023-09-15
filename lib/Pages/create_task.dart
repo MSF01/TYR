@@ -9,7 +9,12 @@ class CreateTask extends StatefulWidget {
 }
 
 class _CreateTaskState extends State<CreateTask> {
+  void datePicker() {}
+
   final createTask = TextEditingController();
+  final createDescription = TextEditingController();
+  final pickDate = TextEditingController(text: '01/01/2000');
+  final pickTime = TextEditingController(text: 'Value');
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,7 +32,7 @@ class _CreateTaskState extends State<CreateTask> {
                 style: TextStyle(fontSize: 18),
               ),
             ),
-            const SizedBox(height: 10),
+            const SizedBox(height: 20),
             TheTextField(
               controller: createTask,
               hint: 'Enter new plan',
@@ -42,24 +47,42 @@ class _CreateTaskState extends State<CreateTask> {
                 style: TextStyle(fontSize: 18),
               ),
             ),
-            const SizedBox(height: 10),
+            const SizedBox(height: 25),
             SizedBox(
-              width: 210,
+              width: 215,
               child: TheTextField(
-                controller: createTask,
-                hint: '01/01/2000',
+                controller: pickDate,
+                hint: '',
                 size: 18,
                 sufIcon: const Icon(Icons.calendar_month_outlined),
               ),
             ),
+            const SizedBox(height: 20),
+            SizedBox(
+              width: 215,
+              child: TheTextField(
+                controller: pickTime,
+                hint: '',
+                size: 18,
+                sufIcon: const Icon(Icons.timer_outlined),
+              ),
+            ),
+            const SizedBox(height: 25),
+            const Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 30),
+              child: Text(
+                'Description',
+                style: TextStyle(fontSize: 18),
+              ),
+            ),
             const SizedBox(height: 15),
             SizedBox(
-              width: 210,
+              height: 250,
               child: TheTextField(
-                controller: createTask,
-                hint: '01/01/2000',
+                controller: createDescription,
+                hint: 'Enter Description Here...',
                 size: 18,
-                sufIcon: const Icon(Icons.calendar_month_outlined),
+                lines: 5,
               ),
             ),
           ],

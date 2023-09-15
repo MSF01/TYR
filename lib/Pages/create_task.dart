@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:tyr/components/textfield.dart';
 
 class CreateTask extends StatefulWidget {
@@ -9,11 +10,26 @@ class CreateTask extends StatefulWidget {
 }
 
 class _CreateTaskState extends State<CreateTask> {
-  void datePicker() {}
+  DateTime _dateTime = DateTime.now();
+  String formateDateTime = '';
+
+  void datePicker() {
+    showDatePicker(
+      context: context,
+      initialDate: _dateTime,
+      firstDate: DateTime(1940),
+      lastDate: DateTime(2030),
+    ).then((value) {
+      setState(() {
+        formateDateTime = DateFormat('dd-MM-yyyy').format(_dateTime);
+        pickDate.text = formateDateTime;
+      });
+    });
+  }
 
   final createTask = TextEditingController();
   final createDescription = TextEditingController();
-  final pickDate = TextEditingController(text: '01/01/2000');
+  final pickDate = TextEditingController();
   final pickTime = TextEditingController(text: 'Value');
   @override
   Widget build(BuildContext context) {
@@ -55,6 +71,9 @@ class _CreateTaskState extends State<CreateTask> {
                 hint: '',
                 size: 18,
                 sufIcon: const Icon(Icons.calendar_month_outlined),
+                onTap: () {
+                  datePicker();
+                },
               ),
             ),
             const SizedBox(height: 20),

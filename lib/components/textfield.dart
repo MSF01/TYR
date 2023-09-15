@@ -7,6 +7,7 @@ class TheTextField extends StatelessWidget {
   final Icon? sufIcon;
   final double? size;
   final int? lines;
+  final Function()? onTap;
 
   const TheTextField({
     super.key,
@@ -16,6 +17,7 @@ class TheTextField extends StatelessWidget {
     this.sufIcon,
     required this.size,
     this.lines,
+    this.onTap,
   });
 
   @override
@@ -41,6 +43,7 @@ class TheTextField extends StatelessWidget {
           filled: true,
         ),
         maxLines: lines,
+        onTap: onTap,
         style: TextStyle(fontSize: size),
       ),
     );

@@ -8,6 +8,8 @@ class TheTextField extends StatelessWidget {
   final double? size;
   final int? lines;
   final Function()? onTap;
+  final Function(String)? onChanged;
+  final String? counterText;
   final bool readOnly;
 
   const TheTextField({
@@ -19,6 +21,8 @@ class TheTextField extends StatelessWidget {
     required this.size,
     this.lines,
     this.onTap,
+    this.counterText,
+    this.onChanged,
     required this.readOnly,
   });
 
@@ -27,6 +31,7 @@ class TheTextField extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 25.0),
       child: TextFormField(
+        onChanged: onChanged,
         textAlign: TextAlign.start,
         controller: controller,
         decoration: InputDecoration(
@@ -38,6 +43,11 @@ class TheTextField extends StatelessWidget {
             borderSide: const BorderSide(color: Colors.black),
             borderRadius: BorderRadius.circular(15),
           ),
+          counterStyle: const TextStyle(
+            color: Colors.red,
+            fontSize: 18,
+          ),
+          counterText: counterText,
           prefixIcon: preIcon,
           suffixIcon: sufIcon,
           hintText: hint,

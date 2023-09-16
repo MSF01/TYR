@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:tyr/components/character_limit_textfield.dart';
 import 'package:tyr/components/textfield.dart';
 
 class CreateTask extends StatefulWidget {
@@ -27,10 +28,11 @@ class _CreateTaskState extends State<CreateTask> {
     });
   }
 
+  late final String? countText;
   final createTask = TextEditingController();
   final createDescription = TextEditingController();
   final pickDate = TextEditingController();
-  final pickTime = TextEditingController(text: 'Value');
+  final pickTime = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -64,12 +66,12 @@ class _CreateTaskState extends State<CreateTask> {
                 style: TextStyle(fontSize: 18),
               ),
             ),
-            const SizedBox(height: 25),
+            const SizedBox(height: 15),
             SizedBox(
               width: 215,
               child: TheTextField(
                 controller: pickDate,
-                hint: '',
+                hint: '01-01-2000',
                 size: 18,
                 sufIcon: const Icon(Icons.calendar_month_outlined),
                 readOnly: true,
@@ -83,10 +85,13 @@ class _CreateTaskState extends State<CreateTask> {
               width: 215,
               child: TheTextField(
                 controller: pickTime,
-                hint: '',
+                hint: '12:00',
                 size: 18,
-                readOnly: false,
+                readOnly: true,
                 sufIcon: const Icon(Icons.timer_outlined),
+                onTap: () {
+                  print('Time Picker Working');
+                },
               ),
             ),
             const SizedBox(height: 25),
@@ -98,11 +103,9 @@ class _CreateTaskState extends State<CreateTask> {
               ),
             ),
             const SizedBox(height: 15),
-            TheTextField(
-              readOnly: false,
+            CharacterLimitTextField(
               controller: createDescription,
               hint: 'Enter Description Here...',
-              size: 18,
               lines: 5,
             ),
             const SizedBox(height: 25),

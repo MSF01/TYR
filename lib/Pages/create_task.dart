@@ -14,6 +14,21 @@ class _CreateTaskState extends State<CreateTask> {
   DateTime _dateTime = DateTime.now();
   String formateDateTime = '';
 
+  late TimeOfDay _timeOfDay;
+  late String time;
+
+  void timePicker() {
+    showTimePicker(
+      context: context,
+      initialTime: TimeOfDay.now(),
+    ).then((value) {
+      setState(() {
+        time = _timeOfDay.format(context).toString();
+        pickTime.text = time;
+      });
+    });
+  }
+
   void datePicker() {
     showDatePicker(
       context: context,
@@ -33,6 +48,7 @@ class _CreateTaskState extends State<CreateTask> {
   final createDescription = TextEditingController();
   final pickDate = TextEditingController();
   final pickTime = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -90,6 +106,7 @@ class _CreateTaskState extends State<CreateTask> {
                 readOnly: true,
                 sufIcon: const Icon(Icons.timer_outlined),
                 onTap: () {
+                  timePicker();
                   print('Time Picker Working');
                 },
               ),

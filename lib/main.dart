@@ -20,15 +20,12 @@ class TYR extends StatelessWidget {
   static String loginRoute = "/login";
   static String onBoard = "/splash";
 
-  // final primaryText = Theme.of()
-  //           .textTheme
-  //           .apply(bodyColor: Colors.white, displayColor: Colors.white54);
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData.dark(useMaterial3: true)
-          .copyWith(scaffoldBackgroundColor: Colors.black),
+      theme: ThemeData.dark(useMaterial3: true).copyWith(
+          scaffoldBackgroundColor: Colors.black,
+          appBarTheme: const AppBarTheme(color: Colors.black)),
       debugShowCheckedModeBanner: false,
       initialRoute: onBoard,
       routes: {

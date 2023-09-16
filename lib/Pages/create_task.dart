@@ -11,7 +11,7 @@ class CreateTask extends StatefulWidget {
 }
 
 class _CreateTaskState extends State<CreateTask> {
-  DateTime _dateTime = DateTime.now();
+  final DateTime _dateTime = DateTime.now();
   String formateDateTime = '';
 
   TimeOfDay _timeOfDay = TimeOfDay.now();
@@ -24,6 +24,7 @@ class _CreateTaskState extends State<CreateTask> {
     if (time != null) {
       setState(() {
         _timeOfDay = time;
+        pickTime.text = _timeOfDay.format(context);
       });
     }
   }
@@ -106,7 +107,6 @@ class _CreateTaskState extends State<CreateTask> {
                 sufIcon: const Icon(Icons.timer_outlined),
                 onTap: () {
                   timePicker();
-                  pickTime.text = _timeOfDay.format(context);
                   print('Time Picker Working');
                 },
               ),

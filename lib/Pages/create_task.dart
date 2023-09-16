@@ -14,19 +14,18 @@ class _CreateTaskState extends State<CreateTask> {
   DateTime _dateTime = DateTime.now();
   String formateDateTime = '';
 
-  late TimeOfDay _timeOfDay;
-  late String time;
+  TimeOfDay _timeOfDay = TimeOfDay.now();
 
-  void timePicker() {
-    showTimePicker(
+  void timePicker() async {
+    final TimeOfDay? time = await showTimePicker(
       context: context,
-      initialTime: TimeOfDay.now(),
-    ).then((value) {
+      initialTime: _timeOfDay,
+    );
+    if (time != null) {
       setState(() {
-        time = _timeOfDay.format(context).toString();
-        pickTime.text = time;
+        _timeOfDay = time;
       });
-    });
+    }
   }
 
   void datePicker() {
@@ -107,6 +106,7 @@ class _CreateTaskState extends State<CreateTask> {
                 sufIcon: const Icon(Icons.timer_outlined),
                 onTap: () {
                   timePicker();
+                  pickTime.text = _timeOfDay.format(context);
                   print('Time Picker Working');
                 },
               ),

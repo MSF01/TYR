@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:tyr/Pages/create_task.dart';
+import 'package:tyr/components/gradient_button.dart';
 import 'package:tyr/components/app_drawer.dart';
 import 'package:tyr/components/card.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -104,10 +105,7 @@ class _HomeState extends State<Home> {
             const SizedBox(height: 8),
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.black,
-                    foregroundColor: Colors.white),
+              child: GradientButton(
                 onPressed: () {
                   Navigator.of(context).push(
                     MaterialPageRoute(
@@ -115,10 +113,8 @@ class _HomeState extends State<Home> {
                     ),
                   );
                 },
-                child: const Text(
-                  'Click me to create',
-                  style: TextStyle(fontSize: 16),
-                ),
+                text: 'Click me to Create',
+                fontSize: 18,
               ),
             ),
           ],

@@ -24,8 +24,9 @@ class TYR extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData.dark(useMaterial3: true).copyWith(
-          scaffoldBackgroundColor: Colors.black,
-          appBarTheme: const AppBarTheme(color: Colors.black)),
+        scaffoldBackgroundColor: Colors.black,
+        appBarTheme: const AppBarTheme(color: Colors.black),
+      ),
       debugShowCheckedModeBanner: false,
       initialRoute: onBoard,
       routes: {

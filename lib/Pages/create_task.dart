@@ -3,6 +3,8 @@ import 'package:intl/intl.dart';
 import 'package:tyr/components/character_limit_textfield.dart';
 import 'package:tyr/components/textfield.dart';
 
+import 'package:tyr/components/gradient_button.dart';
+
 class CreateTask extends StatefulWidget {
   const CreateTask({super.key});
 
@@ -127,17 +129,9 @@ class _CreateTaskState extends State<CreateTask> {
             ),
             const SizedBox(height: 25),
             Center(
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.black,
-                    foregroundColor: Colors.white),
-                onPressed: () {
-                  print('Button is working');
-                },
-                child: const Text(
-                  'Create',
-                  style: TextStyle(fontSize: 20),
-                ),
+              child: GradientButton(
+                onPressed: () {},
+                text: 'Create',
               ),
             ),
           ],

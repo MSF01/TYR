@@ -132,6 +132,7 @@ class _CreateTaskState extends State<CreateTask> {
               child: GradientButton(
                 onPressed: () {},
                 text: 'Create',
+                fontSize: 22,
               ),
             ),
           ],

@@ -35,6 +35,7 @@ class TheTextField extends StatelessWidget {
         textAlign: TextAlign.start,
         controller: controller,
         decoration: InputDecoration(
+          fillColor: const Color(0xFF1A1A1A),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(15),
             borderSide: const BorderSide(color: Colors.black),

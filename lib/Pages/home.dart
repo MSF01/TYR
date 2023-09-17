@@ -103,8 +103,7 @@ class _HomeState extends State<Home> {
               child: Text('Create a new task', style: TextStyle(fontSize: 24)),
             ),
             const SizedBox(height: 8),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
+            Center(
               child: GradientButton(
                 onPressed: () {
                   Navigator.of(context).push(
@@ -112,6 +111,7 @@ class _HomeState extends State<Home> {
                       builder: ((context) => const CreateTask()),
                     ),
                   );
+                  print('Button pressed to create task');
                 },
                 text: 'Click me to Create',
                 fontSize: 18,

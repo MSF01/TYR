@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:tyr/components/character_limit_textfield.dart';
@@ -16,32 +18,54 @@ class _CreateTaskState extends State<CreateTask> {
   final DateTime _dateTime = DateTime.now();
   String formateDateTime = '';
 
-  TimeOfDay _timeOfDay = TimeOfDay.now();
+  TimeOfDay _timeOfDayNow = TimeOfDay.now();
+  TimeOfDay? selectedTime;
+  DateTime? selectedDate;
 
   void timePicker() async {
     final TimeOfDay? time = await showTimePicker(
       context: context,
-      initialTime: _timeOfDay,
+      initialTime: _timeOfDayNow,
     );
     if (time != null) {
       setState(() {
-        _timeOfDay = time;
-        pickTime.text = _timeOfDay.format(context);
+        _timeOfDayNow = time;
+        selectedTime = time;
+        pickTime.text = _timeOfDayNow.format(context);
       });
     }
   }
 
-  void datePicker() {
-    showDatePicker(
+  void datePicker() async {
+    final DateTime? pickedDate = await showDatePicker(
       context: context,
       initialDate: _dateTime,
       firstDate: DateTime(1940),
-      lastDate: DateTime(2030),
-    ).then((value) {
+      lastDate: DateTime(_dateTime.year + 1),
+    );
+
+    if (pickedDate != null) {
       setState(() {
         formateDateTime = DateFormat('dd-MM-yyyy').format(_dateTime);
+        selectedDate = pickedDate;
         pickDate.text = formateDateTime;
       });
+    }
+  }
+
+  void startTimer() {
+    final now = DateTime.now();
+    final taskDateTime = DateTime(
+      selectedDate!.year,
+      selectedDate!.month,
+      selectedDate!.day,
+      selectedTime!.hour,
+      selectedTime!.minute,
+    );
+
+    final duration = taskDateTime.difference(now);
+    Timer(duration, () {
+      print('The reminder is ringing');
     });
   }
 
@@ -64,7 +88,7 @@ class _CreateTaskState extends State<CreateTask> {
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 30.0),
               child: Text(
-                'Title',
+                'Title *',
                 style: TextStyle(fontSize: 18),
               ),
             ),
@@ -80,7 +104,7 @@ class _CreateTaskState extends State<CreateTask> {
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 30.0),
               child: Text(
-                'Date & Time',
+                'Date & Time *',
                 style: TextStyle(fontSize: 18),
               ),
             ),
@@ -117,7 +141,7 @@ class _CreateTaskState extends State<CreateTask> {
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 30),
               child: Text(
-                'Description',
+                'Description *',
                 style: TextStyle(fontSize: 18),
               ),
             ),
@@ -132,7 +156,7 @@ class _CreateTaskState extends State<CreateTask> {
               child: GradientButton(
                 onPressed: () {},
                 text: 'Create',
-                fontSize: 22,
+                fontSize: 18,
               ),
             ),
           ],

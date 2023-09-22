@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:tyr/components/character_limit_textfield.dart';
+import 'package:tyr/components/local_notification.dart';
 import 'package:tyr/components/textfield.dart';
 
 import 'package:tyr/components/gradient_button.dart';
@@ -42,7 +43,7 @@ class _CreateTaskState extends State<CreateTask> {
     final DateTime? pickedDate = await showDatePicker(
       context: context,
       initialDate: _dateTime,
-      firstDate: DateTime(1940),
+      firstDate: DateTime(_dateTime.year),
       lastDate: DateTime(_dateTime.year + 1),
     );
 
@@ -158,7 +159,12 @@ class _CreateTaskState extends State<CreateTask> {
             const SizedBox(height: 25),
             Center(
               child: GradientButton(
-                onPressed: () {},
+                onPressed: () {
+                  LocalNotification().showNotification(
+                      title: 'Task Created',
+                      body: 'Your task has been created for you');
+                  print('Is the button working?');
+                },
                 text: 'Create',
                 fontSize: 18,
               ),

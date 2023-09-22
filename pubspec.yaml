@@ -39,6 +39,7 @@ dependencies:
   cloud_firestore: ^4.8.0
   intl: ^0.18.1
   alarm: ^1.2.2
+  flutter_local_notifications: ^15.1.1
 
 dev_dependencies:
   flutter_test:

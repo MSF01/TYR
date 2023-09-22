@@ -22,7 +22,7 @@ class _CreateTaskState extends State<CreateTask> {
   TimeOfDay? selectedTime;
   DateTime? selectedDate;
 
-  void timePicker() async {
+  void timePicker(BuildContext context) async {
     final TimeOfDay? time = await showTimePicker(
       context: context,
       initialTime: _timeOfDayNow,
@@ -34,9 +34,11 @@ class _CreateTaskState extends State<CreateTask> {
         pickTime.text = _timeOfDayNow.format(context);
       });
     }
+
+    startTimer(selectedDate!, selectedTime!);
   }
 
-  void datePicker() async {
+  void datePicker(BuildContext context) async {
     final DateTime? pickedDate = await showDatePicker(
       context: context,
       initialDate: _dateTime,
@@ -51,16 +53,18 @@ class _CreateTaskState extends State<CreateTask> {
         pickDate.text = formateDateTime;
       });
     }
+
+    timePicker(context);
   }
 
-  void startTimer() {
+  void startTimer(DateTime selectedDate, TimeOfDay selectedTime) {
     final now = DateTime.now();
     final taskDateTime = DateTime(
-      selectedDate!.year,
-      selectedDate!.month,
-      selectedDate!.day,
-      selectedTime!.hour,
-      selectedTime!.minute,
+      selectedDate.year,
+      selectedDate.month,
+      selectedDate.day,
+      selectedTime.hour,
+      selectedTime.minute,
     );
 
     final duration = taskDateTime.difference(now);
@@ -118,7 +122,7 @@ class _CreateTaskState extends State<CreateTask> {
                 sufIcon: const Icon(Icons.calendar_month_outlined),
                 readOnly: true,
                 onTap: () {
-                  datePicker();
+                  datePicker(context);
                 },
               ),
             ),
@@ -132,7 +136,7 @@ class _CreateTaskState extends State<CreateTask> {
                 readOnly: true,
                 sufIcon: const Icon(Icons.timer_outlined),
                 onTap: () {
-                  timePicker();
+                  timePicker(context);
                   print('Time Picker Working');
                 },
               ),

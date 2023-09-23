@@ -6,12 +6,10 @@ class LocalNotification {
 
   Future<void> initNotification() async {
     AndroidInitializationSettings initializationSettings =
-        const AndroidInitializationSettings('flutter_logo.png');
+        const AndroidInitializationSettings('@mipmap/ic_launcher');
 
     var initSettings = InitializationSettings(android: initializationSettings);
-    await notificationsPlugin.initialize(initSettings,
-        onDidReceiveNotificationResponse:
-            (NotificationResponse notificationResponse) async {});
+    await notificationsPlugin.initialize(initSettings);
   }
 
   NotificationDetails notificationDetails() {

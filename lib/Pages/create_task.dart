@@ -147,7 +147,7 @@ class _CreateTaskState extends State<CreateTask> {
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 30),
               child: Text(
-                'Description *',
+                'Description',
                 style: TextStyle(fontSize: 18),
               ),
             ),
@@ -163,7 +163,7 @@ class _CreateTaskState extends State<CreateTask> {
                 onPressed: () async {
                   if (createTask.text == '') {
                     setState(() {
-                      error = 'The title cant be empty';
+                      error = 'The title cannot be left empty';
                     });
                     return;
                   }

@@ -80,6 +80,7 @@ class _CreateTaskState extends State<CreateTask> {
   final createDescription = TextEditingController();
   final pickDate = TextEditingController();
   final pickTime = TextEditingController();
+  String error = '';
 
   @override
   Widget build(BuildContext context) {
@@ -159,7 +160,14 @@ class _CreateTaskState extends State<CreateTask> {
             const SizedBox(height: 25),
             Center(
               child: GradientButton(
-                onPressed: () {
+                onPressed: () async {
+                  if (createTask.text == '') {
+                    setState(() {
+                      error = 'The title cant be empty';
+                    });
+                    return;
+                  }
+
                   LocalNotification().showNotification(
                     title: 'Task Created',
                     body: 'Your task has been created for you',
@@ -170,6 +178,15 @@ class _CreateTaskState extends State<CreateTask> {
                 fontSize: 18,
               ),
             ),
+            const SizedBox(height: 30),
+            Center(
+              child: Text(
+                error,
+                style: const TextStyle(
+                  fontSize: 18,
+                ),
+              ),
+            )
           ],
         ),
       ),

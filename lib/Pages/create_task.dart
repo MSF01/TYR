@@ -35,8 +35,6 @@ class _CreateTaskState extends State<CreateTask> {
         pickTime.text = _timeOfDayNow.format(context);
       });
     }
-
-    startTimer(selectedDate!, selectedTime!);
   }
 
   void datePicker(BuildContext context) async {
@@ -70,7 +68,10 @@ class _CreateTaskState extends State<CreateTask> {
 
     final duration = taskDateTime.difference(now);
     Timer(duration, () {
-      print('The reminder is ringing');
+      LocalNotification().showNotification(
+        title: 'Task Reminder',
+        body: 'Your task is ringing',
+      );
     });
   }
 
@@ -138,7 +139,6 @@ class _CreateTaskState extends State<CreateTask> {
                 sufIcon: const Icon(Icons.timer_outlined),
                 onTap: () {
                   timePicker(context);
-                  print('Time Picker Working');
                 },
               ),
             ),
@@ -161,9 +161,10 @@ class _CreateTaskState extends State<CreateTask> {
               child: GradientButton(
                 onPressed: () {
                   LocalNotification().showNotification(
-                      title: 'Task Created',
-                      body: 'Your task has been created for you');
-                  print('Is the button working?');
+                    title: 'Task Created',
+                    body: 'Your task has been created for you',
+                  );
+                  startTimer(selectedDate!, selectedTime!);
                 },
                 text: 'Create',
                 fontSize: 18,

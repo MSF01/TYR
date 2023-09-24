@@ -105,6 +105,7 @@ class _CreateTaskState extends State<CreateTask> {
               controller: createTask,
               hint: 'Enter new plan',
               size: 18,
+              lines: 1,
               preIcon: const Icon(Icons.edit_outlined),
             ),
             const SizedBox(height: 20),

@@ -86,109 +86,125 @@ class _CreateTaskState extends State<CreateTask> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Create a new task')),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 8.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const SizedBox(height: 10),
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 30.0),
-              child: Text(
-                'Title *',
-                style: TextStyle(fontSize: 18),
+      body: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 8.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const SizedBox(height: 10),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 30.0),
+                child: Text(
+                  'Title *',
+                  style: TextStyle(fontSize: 18),
+                ),
               ),
-            ),
-            const SizedBox(height: 20),
-            TheTextField(
-              readOnly: false,
-              controller: createTask,
-              hint: 'Enter new plan',
-              size: 18,
-              lines: 1,
-              preIcon: const Icon(Icons.edit_outlined),
-            ),
-            const SizedBox(height: 20),
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 30.0),
-              child: Text(
-                'Date & Time *',
-                style: TextStyle(fontSize: 18),
-              ),
-            ),
-            const SizedBox(height: 15),
-            SizedBox(
-              width: 215,
-              child: TheTextField(
-                controller: pickDate,
-                hint: '01-01-2000',
+              const SizedBox(height: 20),
+              TheTextField(
+                readOnly: false,
+                controller: createTask,
+                hint: 'Enter new plan',
                 size: 18,
-                sufIcon: const Icon(Icons.calendar_month_outlined),
-                readOnly: true,
-                onTap: () {
-                  datePicker(context);
-                },
+                lines: 1,
+                preIcon: const Icon(Icons.edit_outlined),
               ),
-            ),
-            const SizedBox(height: 20),
-            SizedBox(
-              width: 215,
-              child: TheTextField(
-                controller: pickTime,
-                hint: '12:00',
-                size: 18,
-                readOnly: true,
-                sufIcon: const Icon(Icons.timer_outlined),
-                onTap: () {
-                  timePicker(context);
-                },
+              const SizedBox(height: 20),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 30.0),
+                child: Text(
+                  'Date & Time *',
+                  style: TextStyle(fontSize: 18),
+                ),
               ),
-            ),
-            const SizedBox(height: 25),
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 30),
-              child: Text(
-                'Description',
-                style: TextStyle(fontSize: 18),
+              const SizedBox(height: 15),
+              SizedBox(
+                width: 215,
+                child: TheTextField(
+                  controller: pickDate,
+                  hint: '01-01-2000',
+                  size: 18,
+                  sufIcon: const Icon(Icons.calendar_month_outlined),
+                  readOnly: true,
+                  onTap: () {
+                    datePicker(context);
+                  },
+                ),
               ),
-            ),
-            const SizedBox(height: 15),
-            CharacterLimitTextField(
-              controller: createDescription,
-              hint: 'Enter Description Here...',
-              lines: 5,
-            ),
-            const SizedBox(height: 25),
-            Center(
-              child: GradientButton(
-                onPressed: () async {
-                  if (createTask.text == '') {
-                    setState(() {
-                      error = 'The title cannot be left empty';
-                    });
-                    return;
-                  }
+              const SizedBox(height: 20),
+              SizedBox(
+                width: 215,
+                child: TheTextField(
+                  controller: pickTime,
+                  hint: '12:00 AM',
+                  size: 18,
+                  readOnly: true,
+                  sufIcon: const Icon(Icons.timer_outlined),
+                  onTap: () {
+                    timePicker(context);
+                  },
+                ),
+              ),
+              const SizedBox(height: 25),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 30),
+                child: Text(
+                  'Description',
+                  style: TextStyle(fontSize: 18),
+                ),
+              ),
+              const SizedBox(height: 15),
+              CharacterLimitTextField(
+                controller: createDescription,
+                hint: 'Enter Description Here...',
+                lines: 5,
+              ),
+              const SizedBox(height: 25),
+              Center(
+                child: GradientButton(
+                  onPressed: () async {
+                    if (createTask.text == '') {
+                      setState(() {
+                        error = 'The title cannot be left empty';
+                      });
+                      return;
+                    }
 
-                  LocalNotification().showNotification(
-                    title: 'Task Created',
-                    body: 'Your task has been created for you',
-                  );
-                  startTimer(selectedDate!, selectedTime!);
-                },
-                text: 'Create',
-                fontSize: 18,
-              ),
-            ),
-            const SizedBox(height: 30),
-            Center(
-              child: Text(
-                error,
-                style: const TextStyle(
+                    LocalNotification().showNotification(
+                      title: 'Task Created',
+                      body: 'Your task has been created for you',
+                    );
+                    startTimer(selectedDate!, selectedTime!);
+                  },
+                  text: 'Create',
                   fontSize: 18,
                 ),
               ),
-            )
-          ],
+              const SizedBox(height: 30),
+              Center(
+                child: Text(
+                  error,
+                  style: const TextStyle(
+                    fontSize: 18,
+                  ),
+                ),
+              ),
+              Center(
+                child: Container(
+                  height: 200,
+                  width: 200,
+                  color: Colors.white10,
+                  child: const Text(
+                    'data',
+                    style: TextStyle(
+                      fontSize: 22,
+                    ),
+                  ),
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );

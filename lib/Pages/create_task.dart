@@ -3,10 +3,11 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:file_picker/file_picker.dart';
+
 import 'package:tyr/components/character_limit_textfield.dart';
 import 'package:tyr/components/local_notification.dart';
 import 'package:tyr/components/textfield.dart';
-
 import 'package:tyr/components/gradient_button.dart';
 
 class CreateTask extends StatefulWidget {
@@ -172,8 +173,21 @@ class _CreateTaskState extends State<CreateTask> {
               const SizedBox(height: 25),
               Center(
                 child: GestureDetector(
-                  onTap: () {
-                    log('Button Upload working');
+                  onTap: () async {
+                    final results = await FilePicker.platform.pickFiles(
+                      allowMultiple: false,
+                      type: FileType.custom,
+                      allowedExtensions: ['png', 'jpg', 'jpeg'],
+                    );
+
+                    if (results == null) {
+                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                        content: Text('No File has been selected'),
+                      ));
+                    }
+
+                    final path = results?.files.single.path;
+                    final fileName = results?.files.single.name;
                   },
                   child: Container(
                     decoration: BoxDecoration(
@@ -231,6 +245,7 @@ class _CreateTaskState extends State<CreateTask> {
                   ),
                 ),
               ),
+              const SizedBox(height: 10),
             ],
           ),
         ),

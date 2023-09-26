@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -161,6 +162,46 @@ class _CreateTaskState extends State<CreateTask> {
                 lines: 5,
               ),
               const SizedBox(height: 25),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 30.0),
+                child: Text(
+                  'Upload task image',
+                  style: TextStyle(fontSize: 18),
+                ),
+              ),
+              const SizedBox(height: 25),
+              Center(
+                child: GestureDetector(
+                  onTap: () {
+                    log('Button Upload working');
+                  },
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(22),
+                      color: const Color(0xFF1A1A1A),
+                    ),
+                    width: 200,
+                    height: 200,
+                    alignment: Alignment.center,
+                    child: const Column(
+                      children: [
+                        SizedBox(height: 40),
+                        Icon(
+                          Icons.cloud_upload_outlined,
+                          color: Colors.white,
+                          size: 60,
+                        ),
+                        SizedBox(height: 30),
+                        Text(
+                          'Upload Image',
+                          style: TextStyle(fontSize: 24),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 35),
               Center(
                 child: GradientButton(
                   onPressed: () async {
@@ -190,19 +231,6 @@ class _CreateTaskState extends State<CreateTask> {
                   ),
                 ),
               ),
-              Center(
-                child: Container(
-                  height: 200,
-                  width: 200,
-                  color: Colors.white10,
-                  child: const Text(
-                    'data',
-                    style: TextStyle(
-                      fontSize: 22,
-                    ),
-                  ),
-                ),
-              )
             ],
           ),
         ),

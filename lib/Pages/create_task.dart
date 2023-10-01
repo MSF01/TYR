@@ -83,6 +83,7 @@ class _CreateTaskState extends State<CreateTask> {
   final pickDate = TextEditingController();
   final pickTime = TextEditingController();
   String error = '';
+  String imagePath = '';
 
   @override
   Widget build(BuildContext context) {
@@ -188,6 +189,10 @@ class _CreateTaskState extends State<CreateTask> {
 
                     final path = results?.files.single.path;
                     final fileName = results?.files.single.name;
+
+                    setState(() {
+                      imagePath = fileName!;
+                    });
                   },
                   child: Container(
                     decoration: BoxDecoration(
@@ -215,7 +220,16 @@ class _CreateTaskState extends State<CreateTask> {
                   ),
                 ),
               ),
-              const SizedBox(height: 35),
+              const SizedBox(height: 15),
+              Center(
+                child: Text(
+                  imagePath,
+                  style: const TextStyle(
+                    fontSize: 18,
+                  ),
+                ),
+              ),
+              const SizedBox(height: 30),
               Center(
                 child: GradientButton(
                   onPressed: () async {

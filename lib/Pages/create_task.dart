@@ -177,8 +177,7 @@ class _CreateTaskState extends State<CreateTask> {
                   onTap: () async {
                     final results = await FilePicker.platform.pickFiles(
                       allowMultiple: false,
-                      type: FileType.custom,
-                      allowedExtensions: ['png', 'jpg', 'jpeg'],
+                      type: FileType.image,
                     );
 
                     if (results == null) {

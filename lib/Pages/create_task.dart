@@ -83,7 +83,6 @@ class _CreateTaskState extends State<CreateTask> {
   final pickDate = TextEditingController();
   final pickTime = TextEditingController();
   String error = '';
-  String imagePath = '';
 
   @override
   Widget build(BuildContext context) {
@@ -164,70 +163,6 @@ class _CreateTaskState extends State<CreateTask> {
                 lines: 5,
               ),
               const SizedBox(height: 25),
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 30.0),
-                child: Text(
-                  'Upload task image',
-                  style: TextStyle(fontSize: 18),
-                ),
-              ),
-              const SizedBox(height: 25),
-              Center(
-                child: GestureDetector(
-                  onTap: () async {
-                    final results = await FilePicker.platform.pickFiles(
-                      allowMultiple: false,
-                      type: FileType.image,
-                    );
-
-                    if (results == null) {
-                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                        content: Text('No File has been selected'),
-                      ));
-                    }
-
-                    final path = results?.files.single.path;
-                    final fileName = results?.files.single.name;
-
-                    setState(() {
-                      imagePath = fileName!;
-                    });
-                  },
-                  child: Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(22),
-                      color: const Color(0xFF1A1A1A),
-                    ),
-                    width: 200,
-                    height: 200,
-                    alignment: Alignment.center,
-                    child: const Column(
-                      children: [
-                        SizedBox(height: 40),
-                        Icon(
-                          Icons.cloud_upload_outlined,
-                          color: Colors.white,
-                          size: 60,
-                        ),
-                        SizedBox(height: 30),
-                        Text(
-                          'Upload Image',
-                          style: TextStyle(fontSize: 24),
-                        )
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-              const SizedBox(height: 15),
-              Center(
-                child: Text(
-                  imagePath,
-                  style: const TextStyle(
-                    fontSize: 18,
-                  ),
-                ),
-              ),
               const SizedBox(height: 30),
               Center(
                 child: GradientButton(

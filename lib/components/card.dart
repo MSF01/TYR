@@ -64,7 +64,7 @@ class TheCard extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.all(16.0).copyWith(bottom: 0),
                   child: SizedBox(
-                    height: 125,
+                    height: 128,
                     child: Text(
                       // Note: Only 180 characters can be inserted
                       description, // This line of 169 Chracters

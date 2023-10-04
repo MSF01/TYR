@@ -26,18 +26,18 @@ class _CreateTaskState extends State<CreateTask> {
   DateTime? selectedDate;
 
   late final String? countText;
+  String error = '';
+  int selectedContainer = 0;
+
   final createTask = TextEditingController();
   final createDescription = TextEditingController();
   final pickDate = TextEditingController();
   final pickTime = TextEditingController();
-  String error = '';
+
   Color containerColor1 = const Color(0xFF1A1A1A);
   Color containerColor2 = const Color(0xFF1A1A1A);
   Color containerColor3 = const Color(0xFF1A1A1A);
   Color originalColor = const Color(0xFF1A1A1A);
-
-  bool isTapped = false;
-  int selectedContainer = 0;
 
   void timePicker(BuildContext context) async {
     final TimeOfDay? time = await showTimePicker(

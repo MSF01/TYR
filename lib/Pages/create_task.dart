@@ -83,6 +83,12 @@ class _CreateTaskState extends State<CreateTask> {
   final pickDate = TextEditingController();
   final pickTime = TextEditingController();
   String error = '';
+  Color containerColor1 = const Color(0xFF1A1A1A);
+  Color containerColor2 = const Color(0xFF1A1A1A);
+  Color containerColor3 = const Color(0xFF1A1A1A);
+  Color originalColor = const Color(0xFF1A1A1A);
+
+  bool isTapped = false;
 
   @override
   Widget build(BuildContext context) {
@@ -163,6 +169,87 @@ class _CreateTaskState extends State<CreateTask> {
                 lines: 5,
               ),
               const SizedBox(height: 25),
+              Center(
+                child: SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            containerColor1 =
+                                isTapped ? originalColor : Colors.grey.shade800;
+                            isTapped = !isTapped;
+                          });
+                        },
+                        child: Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(12),
+                            color: containerColor1,
+                          ),
+                          height: 70,
+                          width: 70,
+                          child: const Center(
+                            child: Text(
+                              '📝',
+                              style: TextStyle(fontSize: 32),
+                            ),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(width: 20),
+                      GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            containerColor2 =
+                                isTapped ? originalColor : Colors.grey.shade800;
+                            isTapped = !isTapped;
+                          });
+                        },
+                        child: Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(12),
+                            color: containerColor2,
+                          ),
+                          height: 70,
+                          width: 70,
+                          child: const Center(
+                            child: Text(
+                              '🛌',
+                              style: TextStyle(fontSize: 32),
+                            ),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(width: 20),
+                      InkWell(
+                        onTap: () {
+                          setState(() {
+                            containerColor3 =
+                                isTapped ? originalColor : Colors.grey.shade800;
+                            isTapped = !isTapped;
+                          });
+                        },
+                        child: Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(12),
+                            color: containerColor3,
+                          ),
+                          height: 70,
+                          width: 70,
+                          child: const Center(
+                            child: Text(
+                              '✨',
+                              style: TextStyle(fontSize: 32),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
               const SizedBox(height: 30),
               Center(
                 child: GradientButton(

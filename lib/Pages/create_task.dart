@@ -169,6 +169,14 @@ class _CreateTaskState extends State<CreateTask> {
                 lines: 5,
               ),
               const SizedBox(height: 25),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 30),
+                child: Text(
+                  'Select your category',
+                  style: TextStyle(fontSize: 18),
+                ),
+              ),
+              const SizedBox(height: 15),
               Center(
                 child: SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
@@ -192,7 +200,7 @@ class _CreateTaskState extends State<CreateTask> {
                           width: 70,
                           child: const Center(
                             child: Text(
-                              '📝',
+                              '💼',
                               style: TextStyle(fontSize: 32),
                             ),
                           ),
@@ -216,7 +224,7 @@ class _CreateTaskState extends State<CreateTask> {
                           width: 70,
                           child: const Center(
                             child: Text(
-                              '🛌',
+                              '🏖️',
                               style: TextStyle(fontSize: 32),
                             ),
                           ),
@@ -240,7 +248,7 @@ class _CreateTaskState extends State<CreateTask> {
                           width: 70,
                           child: const Center(
                             child: Text(
-                              '✨',
+                              '🎊',
                               style: TextStyle(fontSize: 32),
                             ),
                           ),

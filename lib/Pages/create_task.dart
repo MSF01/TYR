@@ -25,6 +25,20 @@ class _CreateTaskState extends State<CreateTask> {
   TimeOfDay? selectedTime;
   DateTime? selectedDate;
 
+  late final String? countText;
+  final createTask = TextEditingController();
+  final createDescription = TextEditingController();
+  final pickDate = TextEditingController();
+  final pickTime = TextEditingController();
+  String error = '';
+  Color containerColor1 = const Color(0xFF1A1A1A);
+  Color containerColor2 = const Color(0xFF1A1A1A);
+  Color containerColor3 = const Color(0xFF1A1A1A);
+  Color originalColor = const Color(0xFF1A1A1A);
+
+  bool isTapped = false;
+  int selectedContainer = 0;
+
   void timePicker(BuildContext context) async {
     final TimeOfDay? time = await showTimePicker(
       context: context,
@@ -76,19 +90,6 @@ class _CreateTaskState extends State<CreateTask> {
       );
     });
   }
-
-  late final String? countText;
-  final createTask = TextEditingController();
-  final createDescription = TextEditingController();
-  final pickDate = TextEditingController();
-  final pickTime = TextEditingController();
-  String error = '';
-  Color containerColor1 = const Color(0xFF1A1A1A);
-  Color containerColor2 = const Color(0xFF1A1A1A);
-  Color containerColor3 = const Color(0xFF1A1A1A);
-  Color originalColor = const Color(0xFF1A1A1A);
-
-  bool isTapped = false;
 
   @override
   Widget build(BuildContext context) {
@@ -183,18 +184,18 @@ class _CreateTaskState extends State<CreateTask> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      GestureDetector(
+                      InkWell(
                         onTap: () {
                           setState(() {
-                            containerColor1 =
-                                isTapped ? originalColor : Colors.grey.shade800;
-                            isTapped = !isTapped;
+                            selectedContainer = 1;
                           });
                         },
                         child: Container(
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(12),
-                            color: containerColor1,
+                            color: selectedContainer == 1
+                                ? Colors.grey.shade800
+                                : containerColor1,
                           ),
                           height: 70,
                           width: 70,
@@ -207,18 +208,18 @@ class _CreateTaskState extends State<CreateTask> {
                         ),
                       ),
                       const SizedBox(width: 20),
-                      GestureDetector(
+                      InkWell(
                         onTap: () {
                           setState(() {
-                            containerColor2 =
-                                isTapped ? originalColor : Colors.grey.shade800;
-                            isTapped = !isTapped;
+                            selectedContainer = 2;
                           });
                         },
                         child: Container(
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(12),
-                            color: containerColor2,
+                            color: selectedContainer == 2
+                                ? Colors.grey.shade800
+                                : containerColor2,
                           ),
                           height: 70,
                           width: 70,
@@ -234,15 +235,15 @@ class _CreateTaskState extends State<CreateTask> {
                       InkWell(
                         onTap: () {
                           setState(() {
-                            containerColor3 =
-                                isTapped ? originalColor : Colors.grey.shade800;
-                            isTapped = !isTapped;
+                            selectedContainer = 3;
                           });
                         },
                         child: Container(
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(12),
-                            color: containerColor3,
+                            color: selectedContainer == 3
+                                ? Colors.grey.shade800
+                                : containerColor3,
                           ),
                           height: 70,
                           width: 70,

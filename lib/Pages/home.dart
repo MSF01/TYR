@@ -73,7 +73,7 @@ class _HomeState extends State<Home> {
                       print('Card 1 has been clicked');
                     },
                     imageLink:
-                        'https://images.unsplash.com/photo-1553877522-43269d4ea984?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
+                        'https://images.unsplash.com/photo-1603518784337-07df4f1895e8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
                     description:
                         'Boost productivity with TYR: The ultimate app to track your routine. Achieve goals effortlessly and stay organized. This card is for meeting category',
                   ),
@@ -82,7 +82,7 @@ class _HomeState extends State<Home> {
                       print('Card 2 has been clicked');
                     },
                     imageLink:
-                        'https://images.unsplash.com/photo-1594179594534-9d826c107c10?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
+                        'https://images.unsplash.com/photo-1603518784337-07df4f1895e8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
                     description:
                         'This is a description of something probably idk. This card is for vacation category',
                   ),
@@ -91,7 +91,7 @@ class _HomeState extends State<Home> {
                       print('Card 3 has been clicked');
                     },
                     imageLink:
-                        'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
+                        'https://images.unsplash.com/photo-1603518784337-07df4f1895e8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
                     description:
                         'This is a description also. This card is for party category',
                   ),

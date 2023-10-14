@@ -5,6 +5,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import 'dart:ui';
 import 'package:tyr/Pages/profile.dart';
+import 'package:tyr/Pages/tasks.dart';
 
 import '../Pages/home.dart';
 import '../Pages/login_page.dart';
@@ -48,15 +49,13 @@ class _AppdrawState extends State<Appdraw> {
       FirebaseAuth.instance.signOut();
       Navigator.push(
         context,
-        MaterialPageRoute(
-          builder: (context) => const Login(),
-        ),
+        MaterialPageRoute(builder: (context) => const Login()),
       );
     }
 
     return Material(
       child: SizedBox(
-        width: MediaQuery.of(context).size.width * 0.5,
+        width: MediaQuery.of(context).size.width * 0.6,
         child: Drawer(
           // backgroundColor: Colors.white.withOpacity(0.7),
           child: BackdropFilter(
@@ -92,8 +91,11 @@ class _AppdrawState extends State<Appdraw> {
                   ),
                   onTap: () {
                     Navigator.pop(context);
-                    Navigator.of(context).push(MaterialPageRoute(
-                        builder: ((context) => const Home())));
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: ((context) => const Home()),
+                      ),
+                    );
                   },
                 ),
                 ListTile(
@@ -107,20 +109,30 @@ class _AppdrawState extends State<Appdraw> {
                   ),
                   onTap: () {
                     Navigator.pop(context);
-                    Navigator.of(context).push(MaterialPageRoute(
-                        builder: ((context) => const CurrentUser())));
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: ((context) => const CurrentUser()),
+                      ),
+                    );
                   },
                 ),
                 ListTile(
-                  leading: const Icon(Icons.settings_outlined),
+                  leading: const Icon(Icons.timer_outlined),
                   title: Text(
-                    'Settings',
+                    'Your Tasks',
                     style: TextStyle(
                       fontSize: 22,
                       fontFamily: GoogleFonts.alata().fontFamily,
                     ),
                   ),
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.pop(context);
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: ((context) => const TaskScreen()),
+                      ),
+                    );
+                  },
                 ),
                 const Divider(
                   // thickness: 1.5,

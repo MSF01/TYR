@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -86,6 +87,15 @@ class _CreateTaskState extends State<CreateTask> {
         title: 'Task Reminder',
         body: 'Your task is ringing',
       );
+    });
+  }
+
+  void createData() {
+    FirebaseFirestore.instance.collection('Tasks').add({
+      'Date': pickDate.text,
+      'Description': createDescription.text,
+      'Time': pickTime.text,
+      'Title': createTask.text,
     });
   }
 
@@ -273,6 +283,7 @@ class _CreateTaskState extends State<CreateTask> {
                       body: 'Your task has been created for you',
                     );
                     startTimer(selectedDate!, selectedTime!);
+                    createData();
                   },
                   text: 'Create',
                   fontSize: 18,

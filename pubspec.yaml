@@ -33,8 +33,13 @@ dependencies:
 
   cupertino_icons: ^1.0.2
   google_fonts: ^4.0.4
+  
+  # Firebase Packages
   firebase_core: ^2.13.0
   firebase_auth: ^4.6.1
+  firebase_ui_firestore: ^1.5.12
+
+  # Misc Packages
   shared_preferences: ^2.1.1
   cloud_firestore: ^4.8.0
   intl: ^0.18.1

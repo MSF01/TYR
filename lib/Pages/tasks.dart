@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -11,12 +12,13 @@ class TaskScreen extends StatefulWidget {
 }
 
 class _TaskScreenState extends State<TaskScreen> {
+  final tasks = FirebaseFirestore.instance.collection('Tasks');
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: const Appdraw(),
       appBar: AppBar(
-        title: const Text('Profile'),
+        title: const Text('Tasks'),
         backgroundColor: Colors.transparent,
         elevation: 0,
         centerTitle: true,
@@ -33,7 +35,37 @@ class _TaskScreenState extends State<TaskScreen> {
                 fontFamily: GoogleFonts.acme.toString(),
               ),
             ),
-          )
+          ),
+          const SizedBox(height: 20),
+          StreamBuilder<QuerySnapshot>(
+            stream: FirebaseFirestore.instance.collection('Tasks').snapshots(),
+            builder: (context, snapshot) {
+              if (!snapshot.hasData) {
+                return const CircularProgressIndicator();
+              }
+
+              final tasks = snapshot.data!.docs;
+
+              return ListView.builder(
+                itemCount: tasks.length,
+                itemBuilder: (context, index) {
+                  final task = tasks[index].data() as Map<String, dynamic>;
+
+                  return ListTile(
+                    title: Text('Task Name: ${task['name']}'),
+                    subtitle: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text('Date: ${task['date']}'),
+                        Text('Time: ${task['time']}'),
+                        Text('Description: ${task['description']}'),
+                      ],
+                    ),
+                  );
+                },
+              );
+            },
+          ),
         ],
       ),
     );

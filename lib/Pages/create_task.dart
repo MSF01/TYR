@@ -91,7 +91,8 @@ class _CreateTaskState extends State<CreateTask> {
   }
 
   void createData() {
-    FirebaseFirestore.instance.collection('Tasks').add({
+    final tasks = FirebaseFirestore.instance.collection('Tasks');
+    tasks.add({
       'Date': pickDate.text,
       'Description': createDescription.text,
       'Time': pickTime.text,

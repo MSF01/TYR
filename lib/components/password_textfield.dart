@@ -27,12 +27,14 @@ class _PasswordTextFieldState extends State<PasswordTextField> {
       child: TextFormField(
         controller: widget.controller,
         decoration: InputDecoration(
+          fillColor: const Color(0xFF1A1A1A),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(15),
             borderSide: const BorderSide(color: Colors.black),
           ),
-          focusedBorder: const OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.black),
+          focusedBorder: OutlineInputBorder(
+            borderSide: const BorderSide(color: Colors.black),
+            borderRadius: BorderRadius.circular(15),
           ),
           hintText: widget.hint,
           hintStyle: const TextStyle(fontSize: 18),

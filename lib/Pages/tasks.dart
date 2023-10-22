@@ -52,15 +52,7 @@ class _TaskScreenState extends State<TaskScreen> {
                   final task = tasks[index].data() as Map<String, dynamic>;
 
                   return ListTile(
-                    title: Text('Task Name: ${task['name']}'),
-                    subtitle: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text('Date: ${task['date']}'),
-                        Text('Time: ${task['time']}'),
-                        Text('Description: ${task['description']}'),
-                      ],
-                    ),
+                    title: Text('Test'),
                   );
                 },
               );

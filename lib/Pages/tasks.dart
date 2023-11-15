@@ -61,19 +61,29 @@ class _TaskScreenState extends State<TaskScreen> {
               if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
                 return const Center(child: Text('No tasks found'));
               }
-              return SizedBox(
+              return Expanded(
                 child: ListView.builder(
                   itemCount: snapshot.data!.docs.length,
                   itemBuilder: (context, index) {
                     var task = snapshot.data!.docs[index];
                     var title = task['Title'];
                     var description = task['Description'];
-                    return ListTile(
-                      title: Text(title),
-                      subtitle: Text(description),
-                      tileColor: Color.fromARGB(255, 39, 39, 39),
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(24)),
+
+                    return Padding(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 20,
+                      ),
+                      child: ListTile(
+                        contentPadding: const EdgeInsets.symmetric(
+                            horizontal: 20, vertical: 10),
+                        title:
+                            Text(title, style: const TextStyle(fontSize: 22)),
+                        subtitle: Text(description,
+                            style: const TextStyle(fontSize: 16)),
+                        tileColor: const Color(0xFF272727),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(24)),
+                      ),
                     );
                   },
                 ),

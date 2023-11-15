@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -12,7 +13,15 @@ class TaskScreen extends StatefulWidget {
 }
 
 class _TaskScreenState extends State<TaskScreen> {
-  final tasks = FirebaseFirestore.instance.collection('Tasks');
+  User? user = FirebaseAuth.instance.currentUser;
+
+  void getDocs() async {
+    FirebaseFirestore.instance
+        .collection('Tasks')
+        .doc((FirebaseAuth.instance.currentUser!).uid)
+        .get();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,23 +47,36 @@ class _TaskScreenState extends State<TaskScreen> {
           ),
           const SizedBox(height: 20),
           StreamBuilder<QuerySnapshot>(
-            stream: FirebaseFirestore.instance.collection('Tasks').snapshots(),
+            stream: FirebaseFirestore.instance
+                .collection('Tasks')
+                .where('userId', isEqualTo: user!.uid)
+                .snapshots(),
             builder: (context, snapshot) {
-              if (!snapshot.hasData) {
-                return const CircularProgressIndicator();
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return const Center(child: CircularProgressIndicator());
               }
-
-              final tasks = snapshot.data!.docs;
-
-              return ListView.builder(
-                itemCount: tasks.length,
-                itemBuilder: (context, index) {
-                  final task = tasks[index].data() as Map<String, dynamic>;
-
-                  return ListTile(
-                    title: Text('Test'),
-                  );
-                },
+              if (snapshot.hasError) {
+                return const Center(child: Text('Error occurred'));
+              }
+              if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
+                return const Center(child: Text('No tasks found'));
+              }
+              return SizedBox(
+                child: ListView.builder(
+                  itemCount: snapshot.data!.docs.length,
+                  itemBuilder: (context, index) {
+                    var task = snapshot.data!.docs[index];
+                    var title = task['Title'];
+                    var description = task['Description'];
+                    return ListTile(
+                      title: Text(title),
+                      subtitle: Text(description),
+                      tileColor: Color.fromARGB(255, 39, 39, 39),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(24)),
+                    );
+                  },
+                ),
               );
             },
           ),

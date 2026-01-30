@@ -109,7 +109,7 @@ Before you begin, ensure you have the following installed:
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/tyr.git
+git clone https://github.com/MSF01/tyr.git
 cd tyr
 ```
 

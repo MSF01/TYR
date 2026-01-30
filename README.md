@@ -2,6 +2,8 @@
 
 <div align="center">
 
+**This project is NOT AI made. Yes Readme is AI generated (if anyone good at documentation it's a good chance to make a contribution to this project. Cheers 🥂**
+
 **A modern Flutter application for tracking your daily routines and tasks with smart notifications**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)

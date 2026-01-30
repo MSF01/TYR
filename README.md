@@ -17,6 +17,7 @@
 Track Your Routine (TYR) is a comprehensive Flutter application designed to help users manage their daily routines and tasks efficiently. The app provides a seamless experience for creating, organizing, and tracking tasks with intelligent notification reminders. Built with Firebase for authentication and data storage, TYR ensures your tasks are securely synced across all your devices.
 
 ### Current Status
+
 🛠️ **Under Development** - Actively being improved with new features and enhancements.
 
 ---
@@ -24,12 +25,14 @@ Track Your Routine (TYR) is a comprehensive Flutter application designed to help
 ## ✨ Features
 
 ### 🔐 Authentication & Security
+
 - **User Registration & Login** - Secure authentication powered by Firebase Auth
 - **Remember Me** - Stay logged in across app sessions
 - **Password Management** - Change password functionality with secure re-authentication
 - **Profile Management** - Update username and view account information
 
 ### 📝 Task Management
+
 - **Create Tasks** - Add tasks with title, description, date, and time
 - **Task Categories** - Organize tasks by category:
   - 💼 Work/Business
@@ -39,17 +42,20 @@ Track Your Routine (TYR) is a comprehensive Flutter application designed to help
 - **Real-time Sync** - Tasks are automatically synced with Firebase Firestore
 
 ### 🔔 Notifications
+
 - **Local Notifications** - Receive reminders for your scheduled tasks
 - **Smart Alerts** - Get notified when your task time arrives
 - **Task Creation Confirmation** - Instant notification when a task is created
 
 ### 🎨 User Interface
+
 - **Modern Dark Theme** - Beautiful Material Design 3 dark theme
 - **Responsive Design** - Works seamlessly across all screen sizes
 - **Google Fonts** - Elegant typography using Google Fonts
 - **Intuitive Navigation** - Easy-to-use drawer navigation
 
 ### 📱 Multi-Platform Support
+
 - ✅ Android
 - ✅ iOS
 - ✅ Web
@@ -62,15 +68,18 @@ Track Your Routine (TYR) is a comprehensive Flutter application designed to help
 ## 🛠️ Tech Stack
 
 ### Core Framework
+
 - **Flutter** - Cross-platform UI framework
 - **Dart** - Programming language (SDK >=2.19.3 <3.0.0)
 
 ### Backend & Services
+
 - **Firebase Core** - Firebase initialization
 - **Firebase Authentication** - User authentication and management
 - **Cloud Firestore** - NoSQL database for task storage
 
 ### Key Dependencies
+
 - `google_fonts: ^4.0.4` - Custom typography
 - `shared_preferences: ^2.1.1` - Local data persistence
 - `flutter_local_notifications: ^15.1.1` - Local notification system
@@ -113,6 +122,7 @@ flutter pub get
 ### 3. Firebase Setup
 
 #### Create Firebase Project
+
 1. Go to [Firebase Console](https://console.firebase.google.com/)
 2. Create a new project or use an existing one
 3. Enable **Authentication** (Email/Password method)
@@ -121,20 +131,24 @@ flutter pub get
 #### Configure Firebase for Your Platform
 
 **Android:**
+
 1. Download `google-services.json` from Firebase Console
 2. Place it in `android/app/` directory
 3. The file should already be present in the project
 
 **iOS:**
+
 1. Download `GoogleService-Info.plist` from Firebase Console
 2. Place it in `ios/Runner/` directory
 3. Update `ios/Runner/Info.plist` if needed
 
 **Web:**
+
 1. Add Firebase configuration to `web/index.html`
 2. Follow [FlutterFire setup guide](https://firebase.flutter.dev/docs/overview)
 
 #### Update Firebase Options
+
 Update `lib/firebase_options.dart` with your Firebase project configuration, or regenerate it using:
 
 ```bash
@@ -178,6 +192,7 @@ flutter build windows --release
 ## 📱 Usage
 
 ### First Time Setup
+
 1. Launch the app
 2. Tap **"Register Now"** to create a new account
 3. Enter your username, email, and password
@@ -185,6 +200,7 @@ flutter build windows --release
 5. Log in with your credentials
 
 ### Creating a Task
+
 1. From the home screen, tap **"Click me to Create"**
 2. Enter task title (required)
 3. Select date and time using the date/time pickers
@@ -194,12 +210,14 @@ flutter build windows --release
 7. You'll receive a confirmation notification
 
 ### Viewing Tasks
+
 1. Open the navigation drawer (☰)
 2. Tap **"Tasks"**
 3. View all your tasks in a scrollable list
 4. Tasks are automatically synced in real-time
 
 ### Managing Profile
+
 1. Open the navigation drawer
 2. Tap **"Profile"**
 3. View your account information
@@ -207,6 +225,7 @@ flutter build windows --release
 5. Logout when finished
 
 ### Notifications
+
 - Notifications are automatically scheduled when you create a task
 - You'll receive a reminder when the task time arrives
 - Make sure to grant notification permissions when prompted
@@ -256,11 +275,14 @@ tyr/
 ### Notification Permissions
 
 **Android:**
+
 - Permissions are automatically handled by `flutter_local_notifications`
 - Ensure notification channel is created (already implemented)
 
 **iOS:**
+
 - Add notification permissions to `ios/Runner/Info.plist`:
+
 ```xml
 <key>UIBackgroundModes</key>
 <array>
@@ -270,7 +292,9 @@ tyr/
 ```
 
 ### Theme Customization
+
 Modify the theme in `lib/main.dart`:
+
 ```dart
 theme: ThemeData.dark(useMaterial3: true).copyWith(
   scaffoldBackgroundColor: Colors.black,
@@ -285,6 +309,7 @@ theme: ThemeData.dark(useMaterial3: true).copyWith(
 Contributions are welcome! This is an open-source project, and we appreciate any help you can provide.
 
 ### How to Contribute
+
 1. **Fork the repository**
 2. **Create a feature branch** (`git checkout -b feature/AmazingFeature`)
 3. **Commit your changes** (`git commit -m 'Add some AmazingFeature'`)
@@ -292,6 +317,7 @@ Contributions are welcome! This is an open-source project, and we appreciate any
 5. **Open a Pull Request**
 
 ### Contribution Guidelines
+
 - Follow the existing code style
 - Write clear commit messages
 - Add comments for complex logic
@@ -299,7 +325,9 @@ Contributions are welcome! This is an open-source project, and we appreciate any
 - Update documentation if needed
 
 ### Reporting Issues
+
 If you find a bug or have a feature request, please open an issue on GitHub with:
+
 - Clear description of the problem/feature
 - Steps to reproduce (for bugs)
 - Expected vs actual behavior
@@ -342,8 +370,7 @@ SOFTWARE.
 
 **Muhammad Shayaan**
 
-- GitHub: [@yourusername](https://github.com/yourusername)
-- Email: [your-email@example.com](mailto:your-email@example.com)
+- GitHub: [@MSF01](https://github.com/MSF01)
 
 ---
 
@@ -381,6 +408,7 @@ SOFTWARE.
 ## 📞 Support
 
 If you have any questions or need help, please:
+
 - Open an issue on GitHub
 - Check existing issues for solutions
 - Review the documentation
